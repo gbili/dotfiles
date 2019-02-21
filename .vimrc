@@ -9,27 +9,44 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 
 Plugin 'VundleVim/Vundle.vim'
+
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
+
 Plugin 'ctrlpvim/ctrlp.vim'
+
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+
 Plugin 'tomasiser/vim-code-dark'
 
-"Plugin 'wincent/command-t'
+" --- Javascript Related Plugins ---
+" Read : https://drivy.engineering/setting-up-vim-for-react/
+" Syntax Highlighting
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx' "jsx syntax highlighting
+
+" Syntax checker (ale is only the glue between vim and the actual syntax
+" checker: eslint
+Plugin 'w0rp/ale'
+
+" Syntax beautyfier : requires that your project has: 
+"     yarn add --dev prettier eslint-config-prettier eslint-plugin-prettier
+Plugin 'skywind3000/asyncrun.vim'
+
+" Emmet for easier JSX
+" allows you to expand CSS selectors into HTML (or JSX) on the fly
+" ex: %h2#tagline.hero-text
+Plugin 'mattn/emmet-vim' " plugin for shorthand completion
+
 "Plugin 'Valloric/YouCompleteMe'
 "Plugin 'sukima/xmledit'
 "Plugin 'scrooloose/syntastic'
 "Plugin 'vim-syntastic/syntastic'
 "Plugin 'honza/vim-snippets'
-"Plugin 'pangloss/vim-javascript'
-"Plugin 'mxw/vim-jsx' " plugin for reactjs syntax
-"Plugin 'mattn/emmet-vim' " plugin for shorthand completion
-" ES2015 code snippets (Optional)
 "Plugin 'epilande/vim-es2015-snippets'
 " React code snippets
 "Plugin 'epilande/vim-react-snippets'
-" Ultisnips
-" Plugin 'SirVer/ultisnips'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -47,7 +64,6 @@ filetype plugin indent on    " required
 " ------------------------------------------------------ END of Vundle 
 
 " BEGIN Essentials---------------------------------------------------
-
 " Leader useful for command-t
 let mapleader=","
 
@@ -55,7 +71,7 @@ let mapleader=","
 syntax on
 
 " highlight all occurences of word with *
-:set hlsearch
+set hlsearch
 
 " Save
 nmap <c-s> :w<cr>
@@ -66,11 +82,12 @@ imap <c-s> <Esc><c-s>
 nnoremap <C-¨> <C-]>
 
 " Make tab as spaces"
-:set tabstop=4
-:set shiftwidth=4
-:set expandtab
-:set number
-:set hidden
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set number
+set hidden
+set relativenumber
 
 "" Command to insert the directory name of the current buffer
 "" From anywhere, %% will expand to dir of current buffer
@@ -85,17 +102,16 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 cnoremap ¢¢ <C-R>='! cp ' . expand('%') . ' '<cr>
 
 "" Weird characters highligher
-:set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
-:set list
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+set list
 
 "" Color scheme
-colorscheme codedark 
+colorscheme codedark
 ""  MacVim colorscheme
 let macvim_skip_colorscheme = 4
 " --------------------------------------------------- END Essentials
 "
 " BEGIN FileType specific rules -------------------------------------------
-"
 filetype on " turn filetype detection on: each time a file is edited Vim will try to recognize the type of the file and set the filetype option. This will trigger the FileType event
 filetype plugin on " loads the file's <plugin> for that filetype in 'runtimepat'
 filetype indent on " loads the file's <indent> fot that filetype in 'runtimepat'
@@ -161,30 +177,83 @@ autocmd FileType javascript set sts=2
 " BEGIN YouCompleteMe general config ----------------------
 " Changes the autocomplete menu background and text colors
 highlight Pmenu ctermfg=29 ctermbg=236
-
 "------------------ END YouCompleteMe general config 
 
 " BEGIN YouCompleteMe config for Python support ----------------------
-"
 "let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
 "let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
 "let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
 "let g:ycm_complete_in_comments = 1 " Completion in comments
 "let g:ycm_complete_in_strings = 1 " Completion in string
-
 "------------------ END YouCompleteMe config config for Python support 
 "
 " BEGIN UtilSnips ---------------------------------------------------
-"
 "" let g:UltiSnipsExpandTrigger       = "<c-j>"
 "" let g:UltiSnipsJumpForwardTrigger  = "<c-j>"
 "" let g:UltiSnipsJumpBackwardTrigger = "<c-p>"
 "" let g:UltiSnipsListSnippets        = "<c-k>" "List possible snippets based on current file
-
 " ------------------------------------------------------ END UtilSnips 
-
-"" BEGIN CtrlP -----------------------------------------------------
 "
+" BEGIN surround.vim ---------------------------------------------------{
+"- Press cs"' inside "Hello world!" to change it to: 'Hello world!'
+"
+"- Now press cs'<q> inside 'Hello World!' to change it to <q>Hello world!</q>
+"
+"- To go full circle, press cst" to get "Hello world!"
+"
+" press ds" on "Hello world!" to get Hello world!
+"
+"Now with the cursor on Hello, press ysiw] (iw is a text object) to get [Hello] world!
+"
+"use ysiw}  gives {for no space around} or ysiw{  gives  { space space around }:
+"
+"use cs{] to replace { Hello } world! and get [  Hello  ] world!
+"
+"Now wrap the entire line in parentheses with yssb or yss).
+"to get ({ Hello } world!)
+"
+"Revert to the original text: ds{ds)
+"Hello world!
+"
+"Emphasize hello: ysiw<em>  to get <em>Hello</em> world!
+"
+"Finally, let's try out visual mode. Press a capital V (for linewise visual mode) followed by S<p class="important">.
+"
+"<p class="important">
+"  <em>Hello</em> world!
+" </p>
+"
+" This plugin is very powerful for HTML and XML editing, a niche which currently seems underfilled in Vim land. (As opposed to HTML/XML inserting, for which many plugins are available). Adding, changing, and removing pairs of tags simultaneously is a breeze.
+
+" the . command will work with ds, cs, and yss if you install repeat vim
+"}------------------------------------------------------ END sourround.vim
+
+"" BEGIN repeat.vim ---------------------------------------------------{
+" Plugin needed in order to make the . command work with surround.vim
+"}------------------------------------------------------ END repeat.vim
+
+"" BEGIN asyncrun.vim ------------------------------------------------{
+" Add an auto command to beautify code for you on write
+autocmd BufWiritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
+"}------------------------------------------------------ END asyncrun.vim
+
+"" BEGIN w0rp/ale ---------------------------------------------------{
+let g:ale_sign_error = '●' "less aggressive than the default >>
+let g:ale_sign_warning = "."
+let g:ale_lint_on_enter = 0 "Less distracting when opening a new file
+"}------------------------------------------------------ END w0rp/ale
+
+"" BEGIN emmet-vim ---------------------------------------------------{
+let g:user_emmet_leader_key = '<Tab>'
+" Transforms Emmet html expansion into JSX syntax
+let g:user_emmet_settings = {
+\   'javascript.jsx' : {
+\      'extends' : 'jsx',
+\   },
+\}
+"}------------------------------------------------------ END emmet-vim
+
+"" BEGIN CtrlP -----------------------------------------------------{
 " Basic Usage:
 " Run :CtrlP or :CtrlP [starting-directory] to invoke CtrlP in find file mode.
 " Run :CtrlPBuffer or :CtrlPMRU to start CtrlP in find buffer or find MRU file mode.
@@ -210,5 +279,4 @@ highlight Pmenu ctermfg=29 ctermbg=236
 "
 map <leader>t :CtrlP .<cr>
 let g:ctrlp_show_hidden = 1
-
-" --------------------------------------------------- END CtrlP
+"}--------------------------------------------------- END CtrlP

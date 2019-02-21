@@ -38,6 +38,15 @@ npm config set prefix '~/.npm-global'
 export PATH=~/.npm-global/bin:$PATH
 source ~/.profile
 ```
+### Install a few javascript plugins to allow ale to beautify your code
+Using npm instead of yarn, do this **in your project's dir**
+`yarn add --dev eslint babel-eslint eslint-plugin-react`
+then do
+`eslint --init`
+Then install the following to prettify:
+`yarn add --dev prettier eslint-config-prettier eslint-plugin-prettier`
+Now if you run: `eslint --fix src/App.js`, your src/App.js will be beautified
+This can be used in conjuction with vim plugin, Plug 'skywind300/asyncrun.vim'
 
 
 [diff-bashrc-profile]:https://askubuntu.com/questions/121413/understanding-bashrc-and-bash-profile "Difference between .bashrc .profile etc."

@@ -2,7 +2,10 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+#added by g
 stty -ixon
+export ws=/home/g/Documents/workspace
+#end added by g
 
 # If not running interactively, don't do anything
 case $- in
