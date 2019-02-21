@@ -10,20 +10,22 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'wincent/command-t'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'sukima/xmledit'
+Plugin 'vim-airline/vim-airline'
 Plugin 'tomasiser/vim-code-dark'
+
+"Plugin 'wincent/command-t'
+"Plugin 'Valloric/YouCompleteMe'
+"Plugin 'sukima/xmledit'
 "Plugin 'scrooloose/syntastic'
-Plugin 'vim-syntastic/syntastic'
-Plugin 'honza/vim-snippets'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx' " plugin for reactjs syntax
-Plugin 'mattn/emmet-vim' " plugin for shorthand completion
+"Plugin 'vim-syntastic/syntastic'
+"Plugin 'honza/vim-snippets'
+"Plugin 'pangloss/vim-javascript'
+"Plugin 'mxw/vim-jsx' " plugin for reactjs syntax
+"Plugin 'mattn/emmet-vim' " plugin for shorthand completion
 " ES2015 code snippets (Optional)
-Plugin 'epilande/vim-es2015-snippets'
+"Plugin 'epilande/vim-es2015-snippets'
 " React code snippets
-Plugin 'epilande/vim-react-snippets'
+"Plugin 'epilande/vim-react-snippets'
 " Ultisnips
 " Plugin 'SirVer/ultisnips'
 
@@ -32,20 +34,20 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 " React JS
-let g:jsx_ext_required = 0 "allow JSX in normal JS files
+"let g:jsx_ext_required = 0 "allow JSX in normal JS files
 "this wrapper will run jsx, check for errors, then pass through JSHint for
 "syntax checking of the transformed code.
 "let g:syntastic_javascript_checkers = ['jsxhint']
 "let g:syntastic_javascript_jsxhing_exec = 'jsx-jshint-wrapper'
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exe = 'npm run lint --'
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+"let g:syntastic_javascript_checkers = ['eslint']
+"let g:syntastic_javascript_eslint_exe = 'npm run lint --'
 " End ReactJs
 "
 "
@@ -71,11 +73,11 @@ highlight Pmenu ctermfg=29 ctermbg=236
 
 " BEGIN YouCompleteMe config for Python support ----------------------
 "
-let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
-let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
-let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
-let g:ycm_complete_in_comments = 1 " Completion in comments
-let g:ycm_complete_in_strings = 1 " Completion in string
+"let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
+"let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
+"let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
+"let g:ycm_complete_in_comments = 1 " Completion in comments
+"let g:ycm_complete_in_strings = 1 " Completion in string
 
 "------------------ END YouCompleteMe config config for Python support 
 "
@@ -96,18 +98,18 @@ let g:ycm_complete_in_strings = 1 " Completion in string
 
 " Start command T in a particular directory
 "
-map <leader>t :CommandTFlush<cr>\|:CommandT .<cr>
-map <leader>gf :CommandTFlush<cr>
-map <leader>gc :CommandTFlush<cr>\|:CommandT config<cr>
-map <leader>gv :CommandTFlush<cr>\|:CommandT vendor<cr>
-map <leader>gm :CommandTFlush<cr>\|:CommandT /Users/g<cr>
-map <leader>gg :CommandTFlush<cr>\|:CommandT /Users/g<cr>
-map <leader>gw :CommandTFlush<cr>\|:CommandT /Users/g/Documents/workspace<cr>
+"map <leader>t :CommandTFlush<cr>\|:CommandT .<cr>
+"map <leader>gf :CommandTFlush<cr>
+"map <leader>gc :CommandTFlush<cr>\|:CommandT config<cr>
+"map <leader>gv :CommandTFlush<cr>\|:CommandT vendor<cr>
+"map <leader>gm :CommandTFlush<cr>\|:CommandT /Users/g<cr>
+"map <leader>gg :CommandTFlush<cr>\|:CommandT /Users/g<cr>
+"map <leader>gw :CommandTFlush<cr>\|:CommandT /Users/g/Documents/workspace<cr>
 " --------------------------------------------------- END CommandT
 
 
 " BEGIN Syntax for VBA  ----------------------------------------------
-autocmd BufNewFile,BufRead *.xlm set ft=vbnet
+"autocmd BufNewFile,BufRead *.xlm set ft=vbnet
 
 " BEGIN Essentials ---------------------------------------------------
 
@@ -122,9 +124,9 @@ syntax on
 :set hlsearch
 
 " Save
-nmap <c-s> :w<CR>
-imap <c-s> <Esc>:w<CR>a
-imap <c-s> <Esc><c-s>
+"nmap <c-s> :w<CR>
+"imap <c-s> <Esc>:w<CR>a
+"imap <c-s> <Esc><c-s>
 
 " jump to the quickref topic (cannot use <C-]>
 nnoremap <C-¨> <C-]>
@@ -196,10 +198,6 @@ filetype indent on
 "map <Leader>g :bn<CR>
 "map <Leader>s :bp<CR>
 "map <Leader>w :bd<CR>
-"
-"" Getters and setters Generator"
-"let @l='ggjkkv0veyopublic function pbg~lkj$a(){}3kj03wigetjjkoreturn $this->pa;kkVjjjyjjjpOj03wrs$jjhvbykk$Pbi$jj0wwiwwwi;lv$hxOpvp0wi$this$i = $0wwwwvey$hpjjgg212jkveldv'
-"
 "
 "
 "let g:debuggerPort = 9000
