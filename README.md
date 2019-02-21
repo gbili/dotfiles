@@ -15,8 +15,29 @@ Read [this][diff-bashrc-profile] if you are really interested in the matter, oth
 - Go to Tweaks GUI App and in **Keyboard & Mouse** press the **Additional Layout Options**
 - Done
 
-### Install Vim-nox (ruby support)
+### Install Vim-nox (ruby support for command-t)
 This is needed if you use command-t. But command-t is a real pain to install, so maybe just use ctrlp.vim and normal vim install
+
+## Vim
+### Use CtrlP instead of Command-t
+Works directly out of the box. You can then change CtrlP binding to <leader>t
+`map <leader>t :CtrlP .<cs>`
+
+### Use a few plugins for Javascript and react
+### Download npm for eslint, babel
+`sudo apt install npm`
+`npm install -g esling` to install it globally, and make it accessible to ale vim
+### npm install -g ERROR EACCES
+If you get an error EACCES it means you are having permission troubles.
+**you shoud never run npm as sudo**, instead you can change where npm thinks global is.
+Give it a local global.
+Option 1: Change npm's default directory to a hidden directory in your home folder
+```
+mkdir ~/.npm-global
+npm config set prefix '~/.npm-global'
+export PATH=~/.npm-global/bin:$PATH
+source ~/.profile
+```
 
 
 [diff-bashrc-profile]:https://askubuntu.com/questions/121413/understanding-bashrc-and-bash-profile "Difference between .bashrc .profile etc."
