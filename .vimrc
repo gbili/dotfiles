@@ -174,9 +174,6 @@ highlight Pmenu ctermfg=29 ctermbg=236
 
 "------------------ END YouCompleteMe config config for Python support 
 "
-"
-
-
 " BEGIN UtilSnips ---------------------------------------------------
 "
 "" let g:UltiSnipsExpandTrigger       = "<c-j>"
@@ -186,20 +183,6 @@ highlight Pmenu ctermfg=29 ctermbg=236
 
 " ------------------------------------------------------ END UtilSnips 
 
-
-"" BEGIN CommandT -----------------------------------------------------
-
-" Start command T in a particular directory
-"map <leader>t :CommandTFlush<cr>\|:CommandT .<cr>
-"map <leader>gf :CommandTFlush<cr>
-"map <leader>gc :CommandTFlush<cr>\|:CommandT config<cr>
-"map <leader>gv :CommandTFlush<cr>\|:CommandT vendor<cr>
-"map <leader>gm :CommandTFlush<cr>\|:CommandT /Users/g<cr>
-"map <leader>gg :CommandTFlush<cr>\|:CommandT /Users/g<cr>
-"map <leader>gw :CommandTFlush<cr>\|:CommandT /Users/g/Documents/workspace<cr>
-"
-" --------------------------------------------------- END CommandT
-"
 "" BEGIN CtrlP -----------------------------------------------------
 "
 " Basic Usage:
