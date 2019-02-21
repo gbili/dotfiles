@@ -124,9 +124,9 @@ syntax on
 :set hlsearch
 
 " Save
-"nmap <c-s> :w<CR>
-"imap <c-s> <Esc>:w<CR>a
-"imap <c-s> <Esc><c-s>
+nmap <c-s> :w<CR>
+imap <c-s> <Esc>:w<CR>a
+imap <c-s> <Esc><c-s>
 
 " jump to the quickref topic (cannot use <C-]>
 nnoremap <C-¨> <C-]>
