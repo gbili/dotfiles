@@ -2,10 +2,32 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-#added by g
-stty -ixon
+#added by g -----{
+# allow control-s on terminal
+if [ -t 0 ]; then
+    stty -ixon
+fi
+
+# my dir vars
 export ws=/home/g/Documents/workspace
-#end added by g
+
+# set vim as default editor
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
+# BEGIN Change command prompt look and integrates git -----{
+green="\[\033[0;32m\]"
+cyan="\[\033[0;36m\]"
+purple="\[\033[0;35m\]"
+reset="\[\033[0m\]"
+source /etc/bash_completion.d/git-prompt
+export GIT_PS1_SHOWDIRTYSTATE=1
+# \u adds the name of the current user to the prompt
+# \$(__git_ps1) adds git related stuff 
+# \W adds the name of the current directory
+export PS1=$PS1'$purple\u$green$(__git_ps1)$cyan \W $ $reset'
+# }----- END Change command prompt
+# }----- END added by g
 
 # If not running interactively, don't do anything
 case $- in
