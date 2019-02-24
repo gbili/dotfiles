@@ -107,7 +107,8 @@ To solve this,
 2. and ubuntu will ask you for sudo password
 3. and the passphrase that you provided when creating the ssh key
 4. Provide both and try to push again
-5. You should be greeted with: Warning key was permanently added to your trusted hosts or something in those lines...
+5. You should be greeted with: Warning key was permanently added to your trusted hosts or something in those lines...  
+
 [diff-bashrc-profile]:https://askubuntu.com/questions/121413/understanding-bashrc-and-bash-profile "Difference between .bashrc .profile etc."
 [installing-cuda-compiler]:https://askubuntu.com/questions/1028830/how-do-i-install-cuda-on-ubuntu-18-04#answer-1036265 "Installing cuda compiler for programming cuda cores"
 [fixing-manually-installed-nvidia-drivers]:https://askubuntu.com/questions/1077493/unable-to-install-nvidia-drivers-on-ubuntu-18-04 "fixing manually installed nvidia drivers"
