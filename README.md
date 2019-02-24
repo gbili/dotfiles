@@ -48,5 +48,26 @@ Then install the following to prettify:
 Now if you run: `eslint --fix src/App.js`, your src/App.js will be beautified
 This can be used in conjuction with vim plugin, Plug 'skywind300/asyncrun.vim'
 
+## Installing drivers for graphics card
+If you installed them manually, undo that with [this answer.][fixing-manually-installed-nvidia-drivers]
+```
+sudo apt-add-repository -r ppa:graphics-drivers/ppa
+sudo apt update
+sudo apt remove nvidia*
+sudo apt autoremove
+```
+Use Ubuntu's drivers repository and drivers manager to auto install the things for you.
+```
+sudo add-apt-repository ppa:graphics-drivers/ppa
+sudo apt update
+sudo ubuntu-dirvers autoinstall
+```
+
+## Programming CUDA cores
+Use use [this answer][installing-cuda-compiler] to install the nvidia cuda compiler.
+
 
 [diff-bashrc-profile]:https://askubuntu.com/questions/121413/understanding-bashrc-and-bash-profile "Difference between .bashrc .profile etc."
+
+[installing-cuda-compiler]:https://askubuntu.com/questions/1028830/how-do-i-install-cuda-on-ubuntu-18-04 "Installing cuda compiler for programming cuda cores"
+[fixing-manually-installed-nvidia-drivers]:https://askubuntu.com/questions/1077493/unable-to-install-nvidia-drivers-on-ubuntu-18-04 "fixing manually installed nvidia drivers"
