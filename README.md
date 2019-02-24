@@ -69,13 +69,14 @@ Use use [this answer][installing-cuda-compiler] to install the nvidia cuda compi
 ## [Headphone Audio HeadSets Bluetooth][headphone-bluetooth]
 1. If you have paired your device and it does not show up as a sound device, you will first need to **unpair it**.
 2. Once you are sure it is unpaired, you want to restart pulseaudio:
-```
-sudo pkill pulseaudio
-```
+   ```bash
+   sudo pkill pulseaudio
+   ```
    This will make sure that once you connect your device via bluetooth, it will be listed as a sound device.
 3. Now, to connect a bluetooth device, make sure it is discoverable, and then go to bluetooth and double click on the listed item to pari it. It should say: Connected.
-
-Then you can go to Settings > Sound and select your headseat from the list.
+4. Then you can go to Settings > Sound and select your headseat from the list.
+   - If the headset is already selected and you have no sound, select another output and reselect it again.
+   - It can happen that the *sound test* works but no sound comes out from youtube videos, the step of unselecting and reselecting should fix this.
 
 ## Configuring git to not ask you for user pass every time
 There are plenty of wrong answers in stack overflow. The way to go is to use ssh keys. Follow the steps in [github][github-ssh-key]. Enter a passphrase which must be unrelated to any other password, just a plain new passphrase. Then you can use the `ssh-agent` to securely save the passphrase so that you don't need to reenter it again, use [this link to see how][gh-passphrases].
