@@ -67,6 +67,12 @@ sudo ubuntu-dirvers autoinstall
 
 ## Programming CUDA cores
 Use use [this answer][installing-cuda-compiler] to install the nvidia cuda compiler.
+After having followed the instructions above for installing graphics drivers, run these commands:
+```
+sudo apt install nvidia-cuda-toolkit gcc-6
+nvcc --version
+```
+This should greet you with something different than : `Command nvcc not found`
 
 ## [Headphone Audio HeadSets Bluetooth][headphone-bluetooth]
 1. If you have paired your device and it does not show up as a sound device, you will first need to **unpair it**.
@@ -101,8 +107,7 @@ To solve this,
 4. Provide both and try to push again
 5. You should be greeted with: Warning key was permanently added to your trusted hosts or something in those lines...
 [diff-bashrc-profile]:https://askubuntu.com/questions/121413/understanding-bashrc-and-bash-profile "Difference between .bashrc .profile etc."
-
-[installing-cuda-compiler]:https://askubuntu.com/questions/1028830/how-do-i-install-cuda-on-ubuntu-18-04 "Installing cuda compiler for programming cuda cores"
+[installing-cuda-compiler]:https://askubuntu.com/questions/1028830/how-do-i-install-cuda-on-ubuntu-18-04#answer-1036265 "Installing cuda compiler for programming cuda cores"
 [fixing-manually-installed-nvidia-drivers]:https://askubuntu.com/questions/1077493/unable-to-install-nvidia-drivers-on-ubuntu-18-04 "fixing manually installed nvidia drivers"
 [headphone-bluetooth]:https://askubuntu.com/questions/824404/bluetooth-speaker-connected-but-not-listed-in-sound-output "Best answer ever! No need to install anything"
 [github-ssh-key]:https://help.github.com/en/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent "Generating ssh keys"
