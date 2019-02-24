@@ -79,9 +79,25 @@ Use use [this answer][installing-cuda-compiler] to install the nvidia cuda compi
    - It can happen that the *sound test* works but no sound comes out from youtube videos, the step of unselecting and reselecting should fix this.
 
 ## Configuring git to not ask you for user pass every time
-There are plenty of wrong answers in stack overflow. The way to go is to use ssh keys. Follow the steps in [github][github-ssh-key]. Enter a passphrase which must be unrelated to any other password, just a plain new passphrase. Then you can use the `ssh-agent` to securely save the passphrase so that you don't need to reenter it again, use [this link to see how][gh-passphrases].
-Then you will need to save the [ssh keys to your github account][saving-ssh-key-to-github].
+There are plenty of wrong answers in stack overflow. The way to go is to use ssh keys. Follow the steps in [github][github-ssh-key]. 
+1. Perform the steps outlined in the link above and
+2. Enter a passphrase which must be unrelated to any other password, just a plain new passphrase. 
+3. Then you can use the `ssh-agent` to securely save the passphrase so that you don't need to reenter it again, use [this link to see how][gh-passphrases].
+4. Then you will need to save the [ssh keys to your github account][saving-ssh-key-to-github].
 
+### Possible Error
+If you see this message when you try to push to origin
+```
+> The authenticity of host 'github.com (IP ADDRESS)' can't be established.
+  > RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.
+  > Are you sure you want to continue connecting (yes/no)?
+```
+To solve this, 
+1. type: `yes` 
+2. and ubuntu will ask you for sudo password
+3. and the passphrase that you provided when creating the ssh key
+4. Provide both and try to push again
+5. You should be greeted with: Warning key was permanently added to your trusted hosts or something in those lines...
 [diff-bashrc-profile]:https://askubuntu.com/questions/121413/understanding-bashrc-and-bash-profile "Difference between .bashrc .profile etc."
 
 [installing-cuda-compiler]:https://askubuntu.com/questions/1028830/how-do-i-install-cuda-on-ubuntu-18-04 "Installing cuda compiler for programming cuda cores"
