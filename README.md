@@ -15,10 +15,12 @@ Read [this][diff-bashrc-profile] if you are really interested in the matter, oth
 - Go to Tweaks GUI App and in **Keyboard & Mouse** press the **Additional Layout Options**
 - Done
 
-### Install Vim-nox (ruby support for command-t)
-This is needed if you use command-t. But command-t is a real pain to install, so maybe just use ctrlp.vim and normal vim install
-
 ## Vim
+
+### Can Install Vim-nox (ruby support for command-t)
+This is needed if you use command-t.
+> But command-t is a real pain to install, so maybe just use ctrlp.vim and normal vim install
+
 ### Use CtrlP instead of Command-t
 Works directly out of the box. You can then change CtrlP binding to <leader>t
 `map <leader>t :CtrlP .<cs>`
