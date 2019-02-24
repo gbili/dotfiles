@@ -66,6 +66,15 @@ sudo ubuntu-dirvers autoinstall
 ## Programming CUDA cores
 Use use [this answer][installing-cuda-compiler] to install the nvidia cuda compiler.
 
+## Headphone Audio HeadSets Bluetooth
+When trying to pair a headphone via bluetooth, the first thing you want to do is restart pulseaudio:
+```
+sudo pkill pulseaudio
+```
+This will make sure that once you connect your device via bluetooth, it will be listed as a sound device.
+Now, to connect a bluetooth device, make sure it is discoverable, and then go to bluetooth and double click on the listed item to pari it. It should say: Connected.
+
+Then you can go to Settings > Sound and select your headseat from the list.
 
 [diff-bashrc-profile]:https://askubuntu.com/questions/121413/understanding-bashrc-and-bash-profile "Difference between .bashrc .profile etc."
 
