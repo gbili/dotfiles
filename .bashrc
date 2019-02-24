@@ -11,6 +11,9 @@ fi
 # my dir vars
 export ws=/home/g/Documents/workspace
 
+#npm reinstall in user g as global
+export PATH="$HOME/.node_modules_global/bin:$PATH"
+
 # set vim as default editor
 export VISUAL=vim
 export EDITOR="$VISUAL"

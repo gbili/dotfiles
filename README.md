@@ -17,6 +17,28 @@ Read [this][diff-bashrc-profile] if you are really interested in the matter, oth
 - Go to Tweaks GUI App and in **Keyboard & Mouse** press the **Additional Layout Options**
 - Done
 
+## Npm
+Node package manager is used for everything related somehow to javascript
+You need to install it with ubuntu and then use that to install the latest version as global. See steps below.
+`sudo apt install npm`
+### npm install -g ERROR EACCES
+If you get an error EACCES it means you are having permission troubles. This is because by default Ubuntu's npm is installed in `/usr` and it needs sudo permission to write to the global modules dir under `/usr`. **You shoud _NEVER_ run npm as sudo**, instead you can change where npm thinks _global_ is.
+### Give it a local global.
+Change npm's default directory to a hidden directory in your home folder
+```
+mkdir ~/.npm_modules_global
+npm config set prefix '~/.npm_modules_global'
+export PATH="$HOME/.npm_modules_global/bin:$PATH"
+source ~/.bashrc
+```
+Once have told npm to consider your home directory as the global modules dir, you can start using it by installing non other than the latest version of npm itself!
+```
+npm install -g npm
+npm --version
+```
+this has the merit of installing the latest version of npm globally.
+From now on, we can safely use npm to install global modules **without giving npm any sudo rights**. You can read more in here
+
 ## Vim
 
 ### Can Install Vim-nox (ruby support for command-t)
@@ -28,20 +50,9 @@ Works directly out of the box. You can then change CtrlP binding to <leader>t
 `map <leader>t :CtrlP .<cs>`
 
 ### Use a few plugins for Javascript and react
-### Download npm for eslint, babel
-`sudo apt install npm`
-`npm install -g esling` to install it globally, and make it accessible to ale vim
-### npm install -g ERROR EACCES
-If you get an error EACCES it means you are having permission troubles.
-**you shoud never run npm as sudo**, instead you can change where npm thinks global is.
-Give it a local global.
-Option 1: Change npm's default directory to a hidden directory in your home folder
-```
-mkdir ~/.npm-global
-npm config set prefix '~/.npm-global'
-export PATH=~/.npm-global/bin:$PATH
-source ~/.profile
-```
+### Download eslint and babel
+`npm install -g eslint` to install it globally, and make it accessible to ale vim
+
 ### Install a few javascript plugins to allow ale to beautify your code
 Using npm instead of yarn, do this **in your project's dir**
 `yarn add --dev eslint babel-eslint eslint-plugin-react`
@@ -108,6 +119,7 @@ To solve this,
 3. and the passphrase that you provided when creating the ssh key
 4. Provide both and try to push again
 5. You should be greeted with: Warning key was permanently added to your trusted hosts or something in those lines...  
+
 
 [diff-bashrc-profile]:https://askubuntu.com/questions/121413/understanding-bashrc-and-bash-profile "Difference between .bashrc .profile etc."
 [installing-cuda-compiler]:https://askubuntu.com/questions/1028830/how-do-i-install-cuda-on-ubuntu-18-04#answer-1036265 "Installing cuda compiler for programming cuda cores"
