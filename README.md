@@ -37,7 +37,7 @@ npm install -g npm
 npm --version
 ```
 this has the merit of installing the latest version of npm globally.
-From now on, we can safely use npm to install global modules **without giving npm any sudo rights**. You can read more in here
+From now on, we can safely use npm to install global modules **without giving npm any sudo rights**. You can read more in [here][mich-wanyoike-peter-dierx]
 
 ## Vim
 
@@ -128,3 +128,4 @@ To solve this,
 [github-ssh-key]:https://help.github.com/en/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent "Generating ssh keys"
 [gh-passphrases]:https://help.github.com/en/articles/working-with-ssh-key-passphrases "Saving passphrases to avoid entering them again"
 [saving-ssh-key-to-github]:https://help.github.com/en/articles/adding-a-new-ssh-key-to-your-github-account "saving ssh key to github account"
+[mich-wanyoike-peter-dierx]:https://www.sitepoint.com/beginners-guide-node-package-manager/ "Npm basics - install and more"
