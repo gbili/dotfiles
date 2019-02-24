@@ -4,8 +4,10 @@
 When using bash there is a functionality that allows you to send a process to sleep with `c-s` (Ctr+S). This will freeze the terminal when editing a file using vim and typing `c-s`.
 
 To overcome this problem, you need to disable this functionality you need to set `stty -ixon` in your `~/.bash_profile` / `~/.bashrc` / `~/.profile`.
+### Troubleshootnig
+In ubuntu I put it in `.bashrc` which is included in non login shells, but in ubuntu it also gets included in login shells. In a login shell you cannot call `stty` that is why you have to test whether `.bashrc` is getting included in a login shell and avoid running the command above if it is the case. Have a look at `.bashrc` to see how.
 
-### Where to store my bash script stuff?
+### Where to store my bash script stuff? (`.bashrc`, `.profile`, `.bash_profile`)?
 Read [this][diff-bashrc-profile] if you are really interested in the matter, otherwise `~/.bashrc`is loaded for non-login shells. Which is what we want.
 
 ## Ubuntu 18.04
