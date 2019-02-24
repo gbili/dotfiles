@@ -77,9 +77,15 @@ sudo pkill pulseaudio
 
 Then you can go to Settings > Sound and select your headseat from the list.
 
+## Configuring git to not ask you for user pass every time
+There are plenty of wrong answers in stack overflow. The way to go is to use ssh keys. Follow the steps in [github][github-ssh-key]. Enter a passphrase which must be unrelated to any other password, just a plain new passphrase. Then you can use the `ssh-agent` to securely save the passphrase so that you don't need to reenter it again, use [this link to see how][gh-passphrases].
+Then you will need to save the [ssh keys to your github account][saving-ssh-key-to-github].
 
 [diff-bashrc-profile]:https://askubuntu.com/questions/121413/understanding-bashrc-and-bash-profile "Difference between .bashrc .profile etc."
 
 [installing-cuda-compiler]:https://askubuntu.com/questions/1028830/how-do-i-install-cuda-on-ubuntu-18-04 "Installing cuda compiler for programming cuda cores"
 [fixing-manually-installed-nvidia-drivers]:https://askubuntu.com/questions/1077493/unable-to-install-nvidia-drivers-on-ubuntu-18-04 "fixing manually installed nvidia drivers"
 [headphone-bluetooth]:https://askubuntu.com/questions/824404/bluetooth-speaker-connected-but-not-listed-in-sound-output "Best answer ever! No need to install anything"
+[github-ssh-key]:https://help.github.com/en/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent "Generating ssh keys"
+[gh-passphrases]:https://help.github.com/en/articles/working-with-ssh-key-passphrases "Saving passphrases to avoid entering them again"
+[saving-ssh-key-to-github]:https://help.github.com/en/articles/adding-a-new-ssh-key-to-your-github-account "saving ssh key to github account"
