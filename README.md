@@ -39,6 +39,9 @@ npm --version
 this has the merit of installing the latest version of npm globally.
 From now on, we can safely use npm to install global modules **without giving npm any sudo rights**. You can read more in [here][mich-wanyoike-peter-dierx]
 
+### To many errors, cut the chaos
+If everything keeps failing try using `npx <npm-module commands>`. For example you can run *gatsby* with : `npx gatsby develop` this will fetch the right modules required to run gatsby.
+
 ## Vim
 
 ### Can Install Vim-nox (ruby support for command-t)

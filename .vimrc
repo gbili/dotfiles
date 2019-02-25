@@ -234,7 +234,7 @@ highlight Pmenu ctermfg=29 ctermbg=236
 
 "" BEGIN asyncrun.vim ------------------------------------------------{
 " Add an auto command to beautify code for you on write
-" autocmd BufWiritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
+autocmd BufWritePost *.js AsyncRun -post=checktime ../.node_modules_global/bin/eslint --fix %
 "}------------------------------------------------------ END asyncrun.vim
 
 "" BEGIN w0rp/ale ---------------------------------------------------{
