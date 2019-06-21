@@ -1,3 +1,5 @@
+" READ https://blog.carbonfive.com/2011/10/17/vim-text-objects-the-definitive-guide/
+" READ https://unix.stackexchange.com/questions/22114/move-to-next-capital-letter
 " BEGIN of Vundle --------------------------------------------
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -39,14 +41,19 @@ Plugin 'skywind3000/asyncrun.vim'
 " ex: %h2#tagline.hero-text
 Plugin 'mattn/emmet-vim' " plugin for shorthand completion
 
+Plugin 'jparise/vim-graphql'
+
 "Plugin 'Valloric/YouCompleteMe'
+
 "Plugin 'sukima/xmledit'
 "Plugin 'scrooloose/syntastic'
 "Plugin 'vim-syntastic/syntastic'
 "Plugin 'honza/vim-snippets'
 "Plugin 'epilande/vim-es2015-snippets'
 " React code snippets
-"Plugin 'epilande/vim-react-snippets'
+Plugin 'SirVer/ultisnips' " Snipets Engine, required by epilande
+Plugin 'epilande/vim-react-snippets' " requires UltiSnips
+" Plugin 'mlaursen/vim-react-snippets'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -78,8 +85,7 @@ nmap <c-s> :w<cr>
 imap <c-s> <Esc>:w<cr>a
 imap <c-s> <Esc><c-s>
 
-" jump to the quickref topic (cannot use <C-]>
-nnoremap <C-¨> <C-]>
+" jump to the quickref topic use <C-]>
 
 " Make tab as spaces"
 set tabstop=4
@@ -147,7 +153,6 @@ autocmd FileType python set sts=4
 autocmd FileType javascript set sw=2
 autocmd FileType javascript set ts=2
 autocmd FileType javascript set sts=2
-"
 
 "let g:debuggerPort = 9000
 "
@@ -177,7 +182,7 @@ autocmd FileType javascript set sts=2
 " BEGIN YouCompleteMe general config ----------------------
 " Changes the autocomplete menu background and text colors
 highlight Pmenu ctermfg=29 ctermbg=236
-"------------------ END YouCompleteMe general config 
+"------------------ END YouCompleteMe general config
 
 " BEGIN YouCompleteMe config for Python support ----------------------
 "let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
@@ -186,42 +191,103 @@ highlight Pmenu ctermfg=29 ctermbg=236
 "let g:ycm_complete_in_comments = 1 " Completion in comments
 "let g:ycm_complete_in_strings = 1 " Completion in string
 "------------------ END YouCompleteMe config config for Python support 
+" BEGIN UltiSnips ---------------------------------------------------
+let g:UltiSnipsExpandTrigger       = "<c-l>"
+let g:UltiSnipsListSnippets        = "<c-j>" "List possible snippets based on current file
+" ------------------------------------------------------ END UtilSnips 
+" BEGIN vim-react-snipets --------------------------------------------
+" requires ultisnips
 "
-" BEGIN UtilSnips ---------------------------------------------------
-"" let g:UltiSnipsExpandTrigger       = "<c-j>"
-"" let g:UltiSnipsJumpForwardTrigger  = "<c-j>"
-"" let g:UltiSnipsJumpBackwardTrigger = "<c-p>"
-"" let g:UltiSnipsListSnippets        = "<c-k>" "List possible snippets based on current file
+" Skeleton:
+" rrcc   - React Redux Class Component
+" rcc    - React Class Component
+" rfc    - React Functional Component
+" rsc    - React Styled Component
+" rsci   - React Styled Component Interpolation
+"
+" Lifecycle:
+" cwm    - componentWillMount() {...}
+" cdm    - componentDidMount() {...}
+" cwrp   - componentWillReceiveProps(nextProps) {...}
+" scup   - shouldComponentUpdate(nextProps, nextState) {...}
+" cwup   - componentWillUpdate(nextProps, nextState) {...}
+" cdup   - componentDidUpdate(prevProps, prevState) {...}
+" cwu    - componentWillUnmount() {...}
+" ren    - render() {...}"
+"
+" PropTypes:
+" pt    - propTypes {...}
+" pt.a   - PropTypes.array
+" pt.b   - PropTypes.bool
+" pt.f   - PropTypes.func
+" pt.n   - PropTypes.number
+" pt.o   - PropTypes.object
+" pt.s   - PropTypes.string
+" pt.no   - PropTypes.node
+" pt.e   - PropTypes.element
+" pt.io   - PropTypes.instanceOf
+" pt.one   - PropTypes.oneOf
+" pt.onet   - PropTypes.oneOfType (Union)
+" pt.ao   - PropTypes.arrayOf (Instances)
+" pt.oo   - PropTypes.objectOf
+" pt.sh   - PropTypes.shape
+" ir    - isRequired
+"
+" Others:
+" props    - this.props
+" state    - this.state
+" set    - this.setState(...)
+" dp    - defaultProps {...}
+" cn    - className
+" ref    - ref
+" pp    - ${props => props}
+"
+" Hooks:
+" us.s   - const [state, setState] = useState('');
+" us.e   - useEffect(() => { });
+" us.er   - useEffect(() => { return () => {}; });
+" us.c   - const context = useContext(ctx);
+" us.r   - const [store, dispatch] = useReducer(storeReducer, initialState);
+" us.cb   - useCallback(() => { }, []);
+" us.m   - const memo = useMemo(() => { }, []);
 " ------------------------------------------------------ END UtilSnips 
 "
+"
 " BEGIN surround.vim ---------------------------------------------------{
-"- Press cs"' inside "Hello world!" to change it to: 'Hello world!'
+" Commands:
+"   Normal Mode: (cursor on word)
+"     CS: Change Surrounding
+"     cs"'    : change surrounding "           with   '
+"     cs'<q>  : change surrounding '           with   <q></q>
+"     cst'    : change surrounding tag         with   '
+"     DS: Delete Surrounding,
+"     ds'     : delete surrounding '                       (applied anywhere in line)
+"     YSIW: Yep Surround Immediate Word
+"     ysiw]   : yep surround immediate word   with ]       (closing bracket no outer space)
+"     ysiw{   : yep surround immediate word   with {+space (opening bracket adds outer space)
+"     YSS: Yep Surround Simpleline Word
+"     yss)    : yep surround simpleline       with )       (closing bracket no outer space)
+"   Visual Mode: (v or V)
+"     S<p class="hello">: Surround word or line with p class html tag
 "
-"- Now press cs'<q> inside 'Hello World!' to change it to <q>Hello world!</q>
-"
-"- To go full circle, press cst" to get "Hello world!"
-"
+"  Press cs"' inside "Hello world!" to change it to: 'Hello world!'
+"  Now press cs'<q> inside 'Hello World!' to change it to <q>Hello world!</q>
+"  To go full circle, press cst" to get "Hello world!"
 " press ds" on "Hello world!" to get Hello world!
+"  Now with the cursor on Hello, press ysiw] (iw is a text object) to get [Hello] world!
+"  use ysiw}  gives {for no space around} or ysiw{  gives  { space space around }:
+"  use cs{] to replace { Hello } world! and get [  Hello  ] world!
+"  Now wrap the entire line in parentheses with yssb or yss).
+"  to get ({ Hello } world!)
+"  Revert to the original text: ds{ds)
+"  Hello world!
+"  Emphasize hello: ysiw<em>  to get <em>Hello</em> world!
 "
-"Now with the cursor on Hello, press ysiw] (iw is a text object) to get [Hello] world!
+"  Finally, let's try out visual mode. Press a capital V (for linewise visual mode) followed by S<p class="important">.
 "
-"use ysiw}  gives {for no space around} or ysiw{  gives  { space space around }:
-"
-"use cs{] to replace { Hello } world! and get [  Hello  ] world!
-"
-"Now wrap the entire line in parentheses with yssb or yss).
-"to get ({ Hello } world!)
-"
-"Revert to the original text: ds{ds)
-"Hello world!
-"
-"Emphasize hello: ysiw<em>  to get <em>Hello</em> world!
-"
-"Finally, let's try out visual mode. Press a capital V (for linewise visual mode) followed by S<p class="important">.
-"
-"<p class="important">
-"  <em>Hello</em> world!
-" </p>
+"  <p class="important">
+"    <em>Hello</em> world!
+"   </p>
 "
 " This plugin is very powerful for HTML and XML editing, a niche which currently seems underfilled in Vim land. (As opposed to HTML/XML inserting, for which many plugins are available). Adding, changing, and removing pairs of tags simultaneously is a breeze.
 
@@ -241,10 +307,27 @@ autocmd BufWritePost *.js AsyncRun -post=checktime ../.node_modules_global/bin/e
 let g:ale_sign_error = '●' "less aggressive than the default >>
 let g:ale_sign_warning = "."
 let g:ale_lint_on_enter = 0 "Less distracting when opening a new file
+let g:ale_lint_on_text_changed = 'never' " only check when file is saved otherwise crashes
 "}------------------------------------------------------ END w0rp/ale
 
 "" BEGIN emmet-vim ---------------------------------------------------{
-let g:user_emmet_leader_key = '<Tab>'
+" How to use: type for example :
+" h1
+" and when still in insert mode type leader key to trigger emmet
+" here we tell emmet that its leader key will be ','
+" then press ',' again. The second coma is the expansion command in emmet.
+" So all together in insert mode is: h1,,  which produces <h1></h1>
+"Example:
+" ul>li*5>{your text $$$}
+"Expands:
+" <ul>
+"     <li>your text 001</li>
+"     <li>your text 002</li>
+"     <li>your text 003</li>
+"     <li>your text 004</li>
+"     <li>your text 005</li>
+" </ul>
+let g:user_emmet_leader_key = ','
 " Transforms Emmet html expansion into JSX syntax
 let g:user_emmet_settings = {
 \   'javascript.jsx' : {
@@ -279,4 +362,5 @@ let g:user_emmet_settings = {
 "
 map <leader>t :CtrlP .<cr>
 let g:ctrlp_show_hidden = 1
+let g:ctrlp_custom_ignore = 'node_modules\|build\|DS_Store\|git\|.swp' " ignore non dev source code
 "}--------------------------------------------------- END CtrlP
