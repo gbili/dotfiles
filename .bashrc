@@ -29,8 +29,9 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 # \$(__git_ps1) adds git related stuff 
 # \W adds the name of the current directory
 export PS1=$PS1'$purple\u$green$(__git_ps1)$cyan \W $ $reset'
-# }----- END Change command prompt
-# }----- END added by g
+# }
+# END Change command prompt
+# END added by g
 
 # If not running interactively, don't do anything
 case $- in
