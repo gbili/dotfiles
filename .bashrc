@@ -8,9 +8,6 @@ if [ -t 0 ]; then
     stty -ixon
 fi
 
-# my dir vars
-export ws=/home/g/Documents/workspace
-
 #npm reinstall in user g as global
 export PATH="$HOME/.node_modules_global/bin:$PATH"
 
@@ -87,21 +84,34 @@ xterm*|rxvt*)
     ;;
 esac
 
+
 # BEGIN Change command prompt look and integrates git -----{
-green='\[\033[01;32m\]'
-blue='\[\033[01;34m\]'
-coolgreen='\e[38;5;48m'
-cyan='\[\033[01;36m\]'
-purple="\[\033[01;35m\]"
-coolpink='\e[38;5;211m'
-reset="\[\033[00m\]"
 if [[ "$OSTYPE" == "darwin"* ]]; then
     # Mac OSX
-    source /etc/bash_completion.d/git-prompt
+    USERSHOME="/Users"
+
+    green='\[\033[01;32m\]'
+    blue='\[\033[01;34m\]'
+    coolgreen='\e[38;5;48m'
+    cyan='\[\033[01;36m\]'
+    purple="\[\033[01;35m\]"
+    coolpink='\e[38;5;211m'
+    reset="\[\033[00m\]"
+    # Enable tab completion
+    source ~/git-completion.bash
+    # Change command prompt
+    source ~/git-prompt.sh
+
 else
+
+    USERSHOME="/home"
     # assume ubuntu
     source /usr/lib/git-core/git-sh-prompt
+
 fi
+# my dir vars
+export ws=$USERSHOME/g/Documents/workspace
+
 export GIT_PS1_SHOWDIRTYSTATE=1
 # \u adds the name of the current user to the prompt
 # \$(__git_ps1) adds git related stuff 
