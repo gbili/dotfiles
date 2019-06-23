@@ -116,7 +116,7 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 # \u adds the name of the current user to the prompt
 # \$(__git_ps1) adds git related stuff 
 # \W adds the name of the current directory
-export PS1='\[\033[0;35m\]\u:\e[38;5;101m\w\e[38;5;48m$(__git_ps1)\[\033[0;36m\]\n\W \$ \[\033[00m\]'
+export PS1='\e[38;5;101m\w\n\[\033[0;35m\]\u\[\033[00m\]:\[\033[0;36m\]\W\e[38;5;48m$(__git_ps1)\[\033[0;35m\]\$\[\033[00m\] '
 # }
 # END Change command prompt
 # END added by g
