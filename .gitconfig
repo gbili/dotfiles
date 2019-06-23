@@ -1,4 +1,14 @@
+[user]
+	name = Guillermo Pages
+	email = public.guillermo@gmail.com
+[push]
+	default = upstream
+[merge]
+	conflictstyle = diff3
+[merg]
+	conflictstyle = diff3
 [alias]
+	co = checkout
     lg = !"git lg1"
     lg1 = !"git lg1-specific --all"
     lg2 = !"git lg2-specific --all"
