@@ -13,6 +13,9 @@ export ws=/home/g/Documents/workspace
 
 #npm reinstall in user g as global
 export PATH="$HOME/.node_modules_global/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.ebcli-virtual-env/executables:$PATH"
+export PATH="$HOME/.pyenv/versions/3.7.2/bin:$PATH"
 
 # set vim as default editor
 export VISUAL=vim
