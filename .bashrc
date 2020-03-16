@@ -62,12 +62,12 @@ esac
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
+        # We have color support; assume it's compliant with Ecma-48
+        # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+        # a case would tend to support setf rather than setaf.)
+        color_prompt=yes
     else
-	color_prompt=
+        color_prompt=no
     fi
 fi
 
@@ -95,11 +95,11 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
     green='\[\033[01;32m\]'
     blue='\[\033[01;34m\]'
-    coolgreen='\e[38;5;48m'
+    coolgreen='\[\e[38;5;48m\]'
     cyan='\[\033[01;36m\]'
-    purple="\[\033[01;35m\]"
-    coolpink='\e[38;5;211m'
-    reset="\[\033[00m\]"
+    purple='\[\033[01;35m\]'
+    coolpink='\[\e[38;5;211m\]'
+    reset='\[\033[00m\]'
     # Enable tab completion
     source ~/git-completion.bash
     # Change command prompt
@@ -119,7 +119,7 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 # \u adds the name of the current user to the prompt
 # \$(__git_ps1) adds git related stuff 
 # \W adds the name of the current directory
-export PS1='\e[38;5;101m\w\n\[\033[0;35m\]\u\[\033[00m\]:\[\033[0;36m\]\W\e[38;5;48m$(__git_ps1)\[\033[0;35m\]\$\[\033[00m\] '
+export PS1='\[\e[38;5;101m\]\w\n\[\033[0;35m\]\u\[\033[00m\]:\[\033[0;36m\]\W\[\e[38;5;48m\]$(__git_ps1)\[\033[0;35m\]\$\[\033[00m\] '
 # }
 # END Change command prompt
 # END added by g
