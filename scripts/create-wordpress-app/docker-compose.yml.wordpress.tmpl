@@ -1,0 +1,54 @@
+version: "3"
+
+services:
+
+  REVERSE_DOMAIN_wp_db:
+    image: mysql:5.7
+    container_name: REVERSE_DOMAIN_wp_db
+    environment: # with this we create the wordpress db using root and its password
+      MYSQL_ROOT_PASSWORD: MYSQLPASSWORD
+      MYSQL_DATABASE: REVERSE_DOMAIN_wp_db_name
+      MYSQL_USER: REVERSE_DOMAIN_wp_db_user
+      MYSQL_PASSWORD: WPDBPASSWORD
+    volumes:
+      - ./db_data:/var/lib/mysql
+
+  REVERSE_DOMAIN_wp_db_phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: REVERSE_DOMAIN_wp_db_phpmyadmin
+    depends_on:
+      - REVERSE_DOMAIN_wp_db
+    environment:
+      PMA_HOST: REVERSE_DOMAIN_wp_db
+      MYSQL_ROOT_PASSWORD: MYSQLPASSWORD
+      MYSQL_DATABASE: REVERSE_DOMAIN_wp_db_name
+      MYSQL_USER: REVERSE_DOMAIN_wp_db_user
+      MYSQL_PASSWORD: WPDBPASSWORD
+    expose:
+      - 80
+    restart: always
+
+  REVERSE_DOMAIN_wp:
+    image: wordpress:latest
+    container_name: REVERSE_DOMAIN_wp
+    depends_on:
+      - REVERSE_DOMAIN_wp_db
+    environment: # with this we use the wordpress db created above
+      VIRTUAL_HOST: DOMAIN.TLD
+      LETSENCRYPT_HOST: DOMAIN.TLD
+      LETSENCRYPT_EMAIL: mail@DOMAIN.TLD
+      WORDPRESS_DB_HOST: REVERSE_DOMAIN_wp_db:3306
+      WORDPRESS_DB_NAME: REVERSE_DOMAIN_wp_db_name
+      WORDPRESS_DB_USER: REVERSE_DOMAIN_wp_db_user
+      WORDPRESS_DB_PASSWORD: WPDBPASSWORD
+    expose:
+      - 80
+    restart: always
+    volumes:
+      - ./wordpress_files:/var/www/html
+
+networks:
+  default:
+    external:
+      name: nginx-proxy
+
