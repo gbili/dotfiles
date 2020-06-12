@@ -36,6 +36,16 @@ if [ -z "$sitesdir" ]; then
     echo "$sitesdir";
 fi
 
+if [ ! -d "$sitesdir" ]; then
+    mkdir -p "$sitesdir"
+fi
+
+if [ ! -d "$sitesdir" ]; then
+    echo "Sill no sites dir in: $sitesdir"
+    echo "Exiting"
+    exit -1;
+fi
+
 dockertmplname="docker-compose.yml.wordpress.tmpl"
 dockertmpl="$sitesdir/$dockertmplname"
 
