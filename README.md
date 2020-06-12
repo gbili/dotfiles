@@ -13,10 +13,7 @@
 
    ```bash
    cd
-   mv ~/.bashrc ~/.bashrc.back
-   ln -s ~/dotfiles/.bashrc ~/.bashrc
-   mv ~/.vimrc ~/.vimrc.back
-   ln -s ~/dotfiles/.vimrc ~/.vimrc
+   ./dotfiles/scripts/link-dotfiles.bash
    ```
 
 3. Install vundle
