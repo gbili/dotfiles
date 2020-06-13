@@ -52,7 +52,7 @@ dockertmpl="$sitesdir/$dockertmplname"
 if [ ! -f "$dockertmpl" ]; then
     currdir="$(dirname "$(readlink -f "$0")")"
     echo "Missing docker-compose.yml template, looking for: "$dockertmpl"";
-    dockertmpl="$currdir/create-wordpress-app/$dockertmplname";
+    dockertmpl="$currdir/$dockertmplname";
     echo "Using default in $dockertmpl";
 fi
 
