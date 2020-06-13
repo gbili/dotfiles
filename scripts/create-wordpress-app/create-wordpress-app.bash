@@ -46,7 +46,7 @@ if [ ! -d "$sitesdir" ]; then
     exit -1;
 fi
 
-dockertmplname="docker-compose.yml.wordpress.tmpl"
+dockertmplname="docker-compose.wordpress.tmpl.yml"
 dockertmpl="$sitesdir/$dockertmplname"
 
 if [ ! -f "$dockertmpl" ]; then
