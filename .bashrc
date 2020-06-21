@@ -91,7 +91,7 @@ esac
 # BEGIN Change command prompt look and integrates git -----{
 if [[ "$OSTYPE" == "darwin"* ]]; then
     # Mac OSX
-    USERSHOME="/Users"
+    USERSHOME="/Users/g"
 
     green='\[\033[01;32m\]'
     blue='\[\033[01;34m\]'
@@ -107,13 +107,13 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
 else
 
-    USERSHOME="/home"
+    USERSHOME="$HOME"
     # assume ubuntu
     source /usr/lib/git-core/git-sh-prompt
 
 fi
 # my dir vars
-export ws=$USERSHOME/g/Documents/workspace
+export ws=$USERSHOME/Documents/workspace
 
 export GIT_PS1_SHOWDIRTYSTATE=1
 # \u adds the name of the current user to the prompt

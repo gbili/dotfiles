@@ -1,0 +1,25 @@
+#!/bin/bash
+
+currdir="$(dirname "$(readlink -f "$0")")"
+dotfilesdir="$(dirname "$currdir")"
+
+testfilname=".bash_aliases"
+testfil="$HOME/$testfilname"
+if [ -e $testfil -o -h $testfil ]; then
+    mv "$testfil" "$testfil.back"
+fi
+ln -s "$dotfilesdir/$testfilname" $testfil 
+
+testfilname=".bashrc"
+testfil="$HOME/$testfilname"
+if [ -e $testfil -o -h $testfil ]; then
+    mv "$testfil" "$testfil.back"
+fi
+ln -s "$dotfilesdir/$testfilname" $testfil 
+
+testfilname=".vimrc"
+testfil="$HOME/$testfilname"
+if [ -e $testfil -o -h $testfil ]; then
+    mv "$testfil" "$testfil.back"
+fi
+ln -s "$dotfilesdir/$testfilname" $testfil 

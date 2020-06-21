@@ -1,5 +1,40 @@
 # Setting up a nix coding environement
 
+## Quick Steps without all the crap
+
+1. You need to git clone this repo to dotfiles:
+
+   ```bash
+   cd
+   git clone https://github.com/gbili/dotfiles.git
+   ```
+
+2. Create the symbolic links to the actual dot files (we also backup preexisting):
+
+   ```bash
+   cd
+   ./dotfiles/scripts/link-dotfiles.bash
+   ```
+
+3. Install vundle
+
+   ```bash
+   cd
+   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+   vim
+   # within vim do
+   :PluginInstall
+   :q
+   ```
+
+4. Create an ssh key pair and add the public to github. Accept the default location:
+
+  ```
+  ssh-keygen -t rsa
+  more ~/.ssh/id_rsa.pub
+  # copy the output and add it to github
+  ```
+
 ## #1!!`*nix` bash: Ctrl-S
 When using bash there is a functionality that allows you to send a process to sleep with `c-s` (Ctr+S). This will freeze the terminal when editing a file using vim and typing `c-s`.
 
