@@ -1,0 +1,143 @@
+#!/bin/bash
+
+#
+# greprep v1.0.0
+# Find files containing pattern, and replace it with replacement 
+# Can also replace filenames with pattern
+#
+
+set -e
+
+OPTIND=0 #Reset in case getopts has been used previously in the shell
+
+# Init variables
+backup_files=0
+keep_temp_files=0
+rename_files=0
+overwrite_files=0
+cleanup_and_exit=0
+
+file_backup_ext=".greprep.back"
+file_temp_ext=".greprep.tmp"
+
+grep_options="l"
+
+pattern=$2
+replacement=$3
+search_in_dir=$4
+
+while getopts "chbBrotTf" opt; do
+    case "$opt" in
+        h)
+            echo "Usage: greprep -chbBrotTf pattern replacement dir"
+            echo "b(backup): File backup enabled"
+            echo "B(!backup): File backup disabled"
+            echo "r(recursive): Grep recursively"
+            echo "o(overwrite): Overwrite files"
+            echo "t(temp): Keep temp files"
+            echo "T(!temp): Don't keep temp files"
+            echo "f(filename): Replace filenames"
+            echo "c(cleanup): cleanup greprep files, with t:remove temp files, with b:remove backup files"
+            exit
+            ;;
+        b)
+            echo "Option b: File backup enabled"
+            backup_files=1
+            ;;
+        B)
+            echo "Option B: File backup disabled"
+            backup_files=0
+            ;;
+        t)
+            echo "Option t: Keep temp files"
+            keep_temp_files=1
+            ;;
+        T)
+            echo "Option T: Don't keep temp files"
+            keep_temp_files=1
+            ;;
+        r)
+            echo "Option r: Grep recursively"
+            grep_options="r$grep_options"
+            ;;
+        c) 
+            echo "Option c: cleanup"
+            search_in_dir=$2
+            cleanup_and_exit=1
+            ;;
+        o)
+            echo "Option o: Overwrite files"
+            overwrite_files=1
+            ;;
+        f)
+            echo "Option f: Replace filenames"
+            rename_files=1
+            ;;
+    esac
+done
+
+function cleanup_greprep_files
+{
+    if [ $backup_files -eq 1 ]; then
+        rm -r *$file_backup_ext
+    fi
+    if [ $keep_temp_files -eq 1 ]; then
+        rm -r *$file_temp_ext
+    fi
+}
+
+if [ $cleanup_and_exit -eq 1 ]; then
+    cleanup_greprep_files
+    exit
+fi
+
+function find_files_with_pattern
+{
+    grep -$grep_options $pattern $search_in_dir
+}
+
+function replace_occurrencies
+{
+    for file in `find_files_with_pattern`; do
+        if [ $backup_files -eq 1 ]; then
+           echo "Backing file:$file -> $file$file_backup_ext" 
+           cp "$file" "$file$file_backup_ext"
+        fi
+        echo "Replacing $pattern with $replacement in $file"
+        sed -e "s/$pattern/$replacement/g" $file > "$file$file_temp_ext"
+
+        if [ $overwrite_files -eq 1 ]; then
+            if [ $keep_temp_files -eq 1 ]; then
+                mv_or_cp='cp'
+            else
+                mv_or_cp='mv'
+            fi
+            $mv_or_cp "$file$file_temp_ext" $file
+        fi
+    done
+}
+
+function get_files_with_pattern_in_filename
+{
+    filename_regex="\\./.*$pattern.*"
+    find $search_in_dir -regex $filename_regex
+}
+
+function rename_files_with_pattern_in_filename
+{
+    for file in `get_files_with_pattern_in_filename`; do
+        file_path=${file%/*}
+        file_basename="${file##*/}"
+        file_basename_noext="${file_basename%.*}"
+        file_ext="${file_basename#$file_basename_noext}"
+        new_file_basename_noext="${file_basename_noext/$pattern/$replacement}"
+        new_filename="$file_path/$new_file_basename_noext$file_ext"
+        mv $file $new_filename
+    done
+}
+
+if [ $rename_files -eq 1 ]; then
+    rename_files_with_pattern_in_filename
+fi
+
+replace_occurrencies

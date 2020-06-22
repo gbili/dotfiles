@@ -28,6 +28,10 @@ Plugin 'tomasiser/vim-code-dark'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx' "jsx syntax highlighting
 
+" Syntax highlighting for TypeScript and JSX
+Plugin 'leafgarland/typescript-vim'
+Plugin 'peitalin/vim-jsx-typescript'
+
 " Syntax checker (ale is only the glue between vim and the actual syntax
 " checker: eslint
 Plugin 'w0rp/ale'
@@ -43,7 +47,7 @@ Plugin 'mattn/emmet-vim' " plugin for shorthand completion
 
 Plugin 'jparise/vim-graphql'
 
-"Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 
 "Plugin 'sukima/xmledit'
 "Plugin 'scrooloose/syntastic'
@@ -88,8 +92,8 @@ imap <c-s> <Esc><c-s>
 " jump to the quickref topic use <C-]>
 
 " Make tab as spaces"
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 set number
 set hidden
@@ -132,14 +136,14 @@ filetype indent on " loads the file's <indent> fot that filetype in 'runtimepat'
 "
 " Run on event FileType is == ...
 "" Html
-autocmd FileType html set sw=4
-autocmd FileType html set ts=4
-autocmd FileType html set sts=4
+autocmd FileType html set sw=2
+autocmd FileType html set ts=2
+autocmd FileType html set sts=2
 
 "" Xml
-autocmd FileType xml set sw=4
-autocmd FileType xml set ts=4
-autocmd FileType xml set sts=4
+autocmd FileType xml set sw=2
+autocmd FileType xml set ts=2
+autocmd FileType xml set sts=2
 
 "" Python
 autocmd FileType python set sw=4
@@ -156,6 +160,9 @@ autocmd FileType javascript set sts=2
 
 "let g:debuggerPort = 9000
 "
+"
+" set filetypes as typescript.tsx
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 
 " React JS
 "let g:jsx_ext_required = 0 "allow JSX in normal JS files
@@ -362,5 +369,5 @@ let g:user_emmet_settings = {
 "
 map <leader>t :CtrlP .<cr>
 let g:ctrlp_show_hidden = 1
-let g:ctrlp_custom_ignore = 'node_modules\|build\|DS_Store\|git\|.swp' " ignore non dev source code
+let g:ctrlp_custom_ignore = 'android\|ios\|.gradle\|node_modules\|build\|DS_Store\|git\|.swp' " ignore non dev source code
 "}--------------------------------------------------- END CtrlP

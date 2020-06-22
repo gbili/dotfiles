@@ -5,3 +5,4 @@ alias create-wordpress-app="bash $HOME/dotfiles/scripts/create-wordpress-app/cre
 alias cwa-dup="bash $HOME/dotfiles/scripts/create-wordpress-app/cwa-dup.bash"
 alias cwa-dup-post="bash $HOME/dotfiles/scripts/create-wordpress-app/cwa-dup-post.bash"
 alias cwa-clean="bash $HOME/dotfiles/scripts/create-wordpress-app/cwa-clean.bash"
+alias greprep="bash $HOME/dotfiles/scripts/greprep"
