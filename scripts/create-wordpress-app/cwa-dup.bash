@@ -39,3 +39,12 @@ sudo cp *_archive.zip wordpress_files/
 sudo cp installer.php wordpress_files/
 sudo chown -R www-data wordpress_files/
 sudo chgrp -R www-data wordpress_files/
+
+# Print credentials for easier setup
+echo "Go to your browser under https://<site>/installer.php"
+echo "and paste the below credentials in the interface: "
+echo ""
+echo "${reversedomain}_wp_db:3306"
+echo "${reversedomain}_wp_db_name"
+echo "${reversedomain}_wp_db_user"
+echo "the -p <password>"
