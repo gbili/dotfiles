@@ -42,7 +42,7 @@ if [ "${handle}" = "blog" ]; then
       tag="0.0.1";
   fi
 
-  ./flush-start.sh -d git-server-hooks -t "0.0.5";
+  $0 -d git-server-hooks -t "0.0.5";
 
   cd "${domaindir}";
   docker rm -f ${handle};
