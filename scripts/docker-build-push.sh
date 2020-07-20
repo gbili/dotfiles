@@ -9,5 +9,5 @@ do
     esac
 done
 
-sudo docker build -t $tag .;
+sudo docker build -t $tag $PWD;
 sudo docker push $tag;
