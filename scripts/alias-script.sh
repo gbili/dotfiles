@@ -18,6 +18,6 @@ if [ ! -f $scriptfilefullpath ]; then
 fi
 
 chmod +x $scriptfilefullpath;
-echo alias $scriptname='"/bin/sh '$scriptfilefullpath'"' >> $HOME/.bash_aliases;
+echo alias $scriptname='"/bin/sh $HOME/dotfiles/scripts/'$filename'"' >> $HOME/.bash_aliases;
 # . is bash's source equivalent in sh
 . $HOME/.bash_aliases;
