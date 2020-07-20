@@ -23,8 +23,8 @@ fi
 
 if [ "${handle}" = "git-server-hooks" ]; then
   if [ -z "$tag" ]; then
-      echo "missing parameter -t <tag>, using 0.0.5";
-      tag="0.0.5";
+      tag="0.1.0";
+      echo "missing parameter -t <tag>, using ${tag}";
   fi
 
   cd "${domaindir}";
@@ -38,15 +38,34 @@ fi
 
 if [ "${handle}" = "blog" ]; then
   if [ -z "$tag" ]; then
-      echo "missing parameter -t <tag>, using 0.0.1";
       tag="0.0.1";
+      echo "missing parameter -t <tag>, using ${tag}";
   fi
 
-  $0 -d git-server-hooks -t "0.0.5";
+  $0 -d git-server-hooks -t "0.1.0";
 
   cd "${domaindir}";
   docker rm -f ${handle};
   docker volume rm git-server-hooks_node-apps;
   docker rmi docker.zivili.ch/gbili/node-app-js:${tag};
   docker-compose up -d;
+fi
+
+# --------- Blog with Git server hooks
+
+if [ "${handle}" = "blog2" ]; then
+  if [ -z "$tag" ]; then
+      tag="0.0.4";
+      echo "missing parameter -t <tag>, using ${tag}";
+  fi
+
+  sudo rm -fr /var/lib/docker/volumes/git-server-hooks_node-apps/_data/${handle};
+  sudo rm -fr "/var/lib/docker/volumes/git-server-hooks_git-repos/_data/${handle}.git";
+
+  cd "${ws}/git-server-hooks-repo-add";
+  docker-compose up -d;
+
+  cd "${domaindir}";
+  docker rm -f ${handle};
+  docker rmi -f docker.zivili.ch/gbili/git-server-hooks-repo-add:${tag};
 fi
