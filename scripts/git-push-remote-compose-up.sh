@@ -10,4 +10,4 @@ do
 done
 
 git push live
-ssh ubuntu@45.157.190.21 '$HOME/dotfiles/scripts/docker-restart-service -d' $compose_dirname;
+ssh ubuntu@45.157.190.21 '$HOME/dotfiles/scripts/docker-restart-service.sh -d' $compose_dirname;
