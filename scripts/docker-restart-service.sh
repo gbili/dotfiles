@@ -9,6 +9,8 @@ do
     esac
 done
 
+ws=$HOME/Documents/workspace
+
 compose_dir=$ws/$compose_dirname;
 
 if [ ! -d ${compose_dir} ]; then
