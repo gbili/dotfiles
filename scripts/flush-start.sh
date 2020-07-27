@@ -29,25 +29,7 @@ if [ "${handle}" = "git-server-hooks" ]; then
 
   cd "${domaindir}";
   docker rm -f ${handle};
-  docker volume rm ${handle}_git-repos;
   docker rmi docker.zivili.ch/gbili/${handle}:${tag};
-  docker-compose up -d;
-fi
-
-# --------- Blog with Git server hooks
-
-if [ "${handle}" = "blog" ]; then
-  if [ -z "$tag" ]; then
-      tag="0.0.1";
-      echo "missing parameter -t <tag>, using ${tag}";
-  fi
-
-  $0 -d git-server-hooks -t "0.1.0";
-
-  cd "${domaindir}";
-  docker rm -f ${handle};
-  docker volume rm git-server-hooks_node-apps;
-  docker rmi docker.zivili.ch/gbili/node-app-js:${tag};
   docker-compose up -d;
 fi
 
@@ -55,17 +37,17 @@ fi
 
 if [ "${handle}" = "blog2" ]; then
   if [ -z "$tag" ]; then
-      tag="0.0.4";
-      echo "missing parameter -t <tag>, using ${tag}";
+      echo "missing parameter -t <tag>, exit";
+      exit 1;
   fi
 
-  sudo rm -fr /var/lib/docker/volumes/git-server-hooks_node-apps/_data/${handle};
-  sudo rm -fr "/var/lib/docker/volumes/git-server-hooks_git-repos/_data/${handle}.git";
-
-  cd "${ws}/git-server-hooks-repo-add";
-  docker-compose up -d;
-
-  cd "${domaindir}";
+  # delete the application container
   docker rm -f ${handle};
-  docker rmi -f docker.zivili.ch/gbili/git-server-hooks-repo-add:${tag};
+
+  # Delete the source repository of the app and create a new empty one
+  sudo rm -fr "/var/lib/docker/volumes/git-server-hooks_node-apps/_data/${handle}";
+  sudo rm -fr "/var/lib/docker/volumes/git-server-hooks_git-repos/_data/${handle}.git";
+  git-repoadd -d $handle;
+
+  # IMPORTANT: make sure to git push after these commands
 fi
