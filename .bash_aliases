@@ -16,3 +16,4 @@ alias git-reporemove="/bin/sh $HOME/dotfiles/scripts/git-server-hooks/repo-remov
 alias git-reporeset="/bin/sh $HOME/dotfiles/scripts/git-server-hooks/repo-reset.sh"
 alias docker-restart-service="/bin/sh $HOME/dotfiles/scripts/docker-restart-service.sh"
 alias docker-copy-to-volume="/bin/sh $HOME/dotfiles/scripts/docker-copy-file-to-volume.sh"
+alias docker-copy-file-to-approot="/bin/sh $HOME/dotfiles/scripts/docker-copy-file-to-approot.sh"

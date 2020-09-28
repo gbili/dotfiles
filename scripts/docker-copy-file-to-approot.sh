@@ -14,6 +14,8 @@ done
 
 ws=$HOME/Documents/workspace
 
+currdir="$(dirname "$(readlink -f "$0")")"
+
 compose_dir=$ws/$compose_dirname;
 
 if [ ! -d ${compose_dir} ]; then
@@ -31,19 +33,11 @@ if [ ! -f ${compose_dir}/${file_to_copy} ]; then
   exit 1;
 fi
 
+echo "Using the app root as path";
 if [ -z ${copy_file_as} ]; then
-  copy_file_as=""
-  echo "Using the root as path";
+  copy_file_as="/$compose_dirname/$file_to_copy"
+else
+  copy_file_as="/$compose_dirname/$copy_file_as"
 fi
 
-# move to the directory where you placed the public key
-echo "Changin directory to ${compose_dir}";
-cd ${compose_dir};
-
-# create a container on which we mount git-server-hooks_ssh-keys at /data
-echo "Will copy $compose_dir/$file_to_copy into temp:/data$copy_file_as";
-docker container create --name temp -v $volume_name:/data busybox
-# copy contents of ./some_temp_dir... into temp's container /data dir
-docker cp $file_to_copy temp:/data$copy_file_as
-# we can remove the container, and still keep the contents
-docker rm temp
+$currdir/docker-copy-file-to-volume.sh -d $compose_dirname -v $volume_name -f $file_to_copy -g $copy_file_as

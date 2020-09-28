@@ -3,6 +3,7 @@
 " BEGIN of Vundle --------------------------------------------
 set nocompatible              " be iMproved, required
 filetype off                  " required
+set encoding=utf-8
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -47,7 +48,7 @@ Plugin 'mattn/emmet-vim' " plugin for shorthand completion
 
 Plugin 'jparise/vim-graphql'
 
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 
 "Plugin 'sukima/xmledit'
 "Plugin 'scrooloose/syntastic'
