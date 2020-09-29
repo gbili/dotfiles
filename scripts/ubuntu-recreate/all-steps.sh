@@ -12,3 +12,7 @@ echo "Launching Step 2 \n";
 
 ubuntu-recreate-install-vim-vundle
 
+echo "Launching Step 3 \n";
+
+ubuntu-recreate-perpare-cwa
+
