@@ -2,6 +2,7 @@
 
 echo " --- git-server-hooks (locally): $0 \n";
 echo "This script will repo-add a git repository <repo_dirname>.git in the running git-server-hooks volume. \n";
+echo "!! MAKE SURE TO HAVE AN IMAGE OF git-server-hooks-repo-add in your local registry. \n";
 
 [ $# -eq 0 ] && { echo "Usage: $0 -d <dir_name> -n <namespace>, example $0 -d my_node_app -n vanilla|node"; exit 1; }
 
