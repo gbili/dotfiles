@@ -1,4 +1,5 @@
 #!/bin/sh
+
 echo "First step is to install gbili/dotfiles, have you done it? \n\n\n\n\n"
 
 echo " ###### Welcome to Ubuntu server initial installs recreation \n"
@@ -55,4 +56,4 @@ docker-compose --version
 
 echo " ###### Step 0 is now finished, hopefully successfully, you now need to setup 'dotfiles' \n"
 
-echo " ###### We now need to setup Nginx Let's Encrypt Proxy \n"
+

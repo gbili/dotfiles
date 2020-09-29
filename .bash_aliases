@@ -7,7 +7,6 @@ alias cwa-dup-post="bash $HOME/dotfiles/scripts/create-wordpress-app/cwa-dup-pos
 alias cwa-clean="bash $HOME/dotfiles/scripts/create-wordpress-app/cwa-clean.bash"
 alias greprep="bash $HOME/dotfiles/scripts/greprep"
 alias flush-start="sh $HOME/dotfiles/scripts/flush-start.sh"
-alias ubuntu-recreate-step0="sh $HOME/dotfiles/scripts/ubuntu-recreate/step0.sh"
 alias alias-script="/bin/sh $HOME/dotfiles/scripts/alias-script.sh"
 alias docker-build-push="/bin/sh $HOME/dotfiles/scripts/docker-build-push.sh"
 alias git-pushup="/bin/sh $HOME/dotfiles/scripts/git-push-remote-compose-up.sh"
@@ -18,3 +17,6 @@ alias git-reporeset="/bin/sh $HOME/dotfiles/scripts/git-server-hooks/repo-reset.
 alias docker-restart-service="/bin/sh $HOME/dotfiles/scripts/docker-restart-service.sh"
 alias docker-copy-to-volume="/bin/sh $HOME/dotfiles/scripts/docker-copy-file-to-volume.sh"
 alias docker-copy-file-to-approot="/bin/sh $HOME/dotfiles/scripts/docker-copy-file-to-approot.sh"
+
+alias ubuntu-recreate-install-docker="sh $HOME/dotfiles/scripts/ubuntu-recreate/step0.sh"
+alias ubuntu-recreate-launch-nginx-proxy="sh $HOME/dotfiles/scripts/ubuntu-recreate/step1.sh"
