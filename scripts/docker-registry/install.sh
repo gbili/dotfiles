@@ -48,17 +48,16 @@ sed -i -e "s/DOMAIN.TLD/$fqdn/g" "$registrydir/docker-compose.yml"
 # Let's Encrypt certbot will look for a vhost nginx conf file
 # and we need to tell it to allow larger files
 echo "Enableing larger files for larger images";
-cp $currdir/vhost/sample.host $registrydir/vhost/$fqdn
+cp $currdir/vhost/dummy.host $registrydir/vhost/$fqdn
 
 # Let's create a password
 echo "You will now decide what password to use for ${username}";
 cd "${registrydir}/auth"
 htpasswd -Bc registry.password $username
 
-echo "We will try to docker-compose up --force-recreate"
-cd "${registrydir}"
-docker-compose up --force-recreate
-
 echo "Do not forget to login before pushing with:\n docker login $fqdn:5000\n";
 echo "You can now: docker-build-push -t $fqdn/$username/myapp-react:0.0.2";
 
+echo "We will try to docker-compose up --force-recreate"
+cd "${registrydir}"
+docker-compose up --force-recreate -d
