@@ -18,5 +18,7 @@ alias docker-restart-service="/bin/sh $HOME/dotfiles/scripts/docker-restart-serv
 alias docker-copy-to-volume="/bin/sh $HOME/dotfiles/scripts/docker-copy-file-to-volume.sh"
 alias docker-copy-file-to-approot="/bin/sh $HOME/dotfiles/scripts/docker-copy-file-to-approot.sh"
 
-alias ubuntu-recreate-install-docker="sh $HOME/dotfiles/scripts/ubuntu-recreate/step0.sh"
-alias ubuntu-recreate-launch-nginx-proxy="sh $HOME/dotfiles/scripts/ubuntu-recreate/step1.sh"
+alias ubuntu-recreate="sh $HOME/dotfiles/scripts/ubuntu-recreate/all-steps.sh"
+alias ubuntu-recreate-install-docker="sh $HOME/dotfiles/scripts/ubuntu-recreate/install-docker.sh"
+alias ubuntu-recreate-launch-nginx-proxy="sh $HOME/dotfiles/scripts/ubuntu-recreate/launch-nginx-proxy.sh"
+alias ubuntu-recreate-install-vim-vundle="sh $HOME/dotfiles/scripts/ubuntu-recreate/install-vim-vundle.sh"

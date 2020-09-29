@@ -6,4 +6,8 @@ echo " ###### Launching Docker-compose nginx-proxy \n"
 
 cd ~/dotfiles/scripts/ubuntu-recreate/nginx-proxy;
 
+docker network create nginx-proxy
+
 docker-compose up -d
+
+cd
