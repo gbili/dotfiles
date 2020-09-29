@@ -16,3 +16,6 @@ echo "Launching Step 3 \n";
 
 ubuntu-recreate-perpare-cwa
 
+echo "Launching Step 4 \n";
+
+ubuntu-recreate-install-docker-registry

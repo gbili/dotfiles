@@ -33,5 +33,6 @@ alias git-reporeset="/bin/sh $HOME/dotfiles/scripts/git-server-hooks/repo-reset.
 alias ubuntu-recreate="/bin/sh $HOME/dotfiles/scripts/ubuntu-recreate/all-steps.sh"
 alias ubuntu-recreate-install-docker="/bin/sh $HOME/dotfiles/scripts/ubuntu-recreate/install-docker.sh"
 alias ubuntu-recreate-launch-nginx-proxy="/bin/sh $HOME/dotfiles/scripts/ubuntu-recreate/launch-nginx-proxy.sh"
+alias ubuntu-recreate-install-docker-registry="/bin/sh $HOME/dotfiles/scripts/ubuntu-recreate/install-docker-registry.sh"
 alias ubuntu-recreate-install-vim-vundle="/bin/sh $HOME/dotfiles/scripts/ubuntu-recreate/install-vim-vundle.sh"
 alias ubuntu-recreate-prepare-cwa="/bin/sh $HOME/dotfiles/scripts/ubuntu-recreate/prepare-for-cwa.sh"
