@@ -33,6 +33,11 @@ if [ ! -d "${registrydir}/auth" ]; then
     mkdir -p "${registrydir}/auth"
 fi
 
+if [ ! -d "${registrydir}/vhost" ]; then
+    echo "Directory $registrydir/vhost DOES NOT exists.";
+    mkdir -p "${registrydir}/vhost"
+fi
+
 currdir="$(dirname "$(readlink -f "$0")")"
 
 cp $currdir/docker-compose.tmpl.yml $registrydir/docker-compose.yml
@@ -43,7 +48,7 @@ sed -i -e "s/DOMAIN.TLD/$fqdn/g" "$registrydir/docker-compose.yml"
 # Let's Encrypt certbot will look for a vhost nginx conf file
 # and we need to tell it to allow larger files
 echo "Enableing larger files for larger images";
-cp -fR $currdir/vhost $registrydir/
+cp $currdir/vhost/sample.host $registrydir/vhost/$fqdn
 
 # Let's create a password
 echo "You will now decide what password to use for ${username}";
