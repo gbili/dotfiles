@@ -2,9 +2,6 @@
 
 # https://gabrieltanner.org/blog/docker-registry
 
-# We will need this to generate the password
-sudo apt install apache2-utils
-
 # Create a registry
 [ $# -eq 0 ] && { echo "Usage: $0 -d <fqdomainname> -u <user>"; exit 1; }
 
@@ -18,6 +15,9 @@ do
 done
 
 cd;
+
+# We will need this to generate the password
+sudo apt install apache2-utils
 
 registrydir="$ws/docker-registry"
 
