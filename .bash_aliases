@@ -8,6 +8,8 @@ alias cwa-dup="/bin/sh $HOME/dotfiles/scripts/create-wordpress-app/cwa-dup.sh"
 alias cwa-dup-post="/bin/sh $HOME/dotfiles/scripts/create-wordpress-app/cwa-dup-post.sh"
 alias cwa-clean="/bin/sh $HOME/dotfiles/scripts/create-wordpress-app/cwa-clean.sh"
 
+# Docker registry
+alias docker-registry-install="/bin/sh $HOME/dotfiles/scripts/docker-registry/install.sh"
 # Docker or git-server-hooks related scripts
 alias docker-build-push="/bin/sh $HOME/dotfiles/scripts/docker-build-push.sh"
 alias docker-copy-to-volume="/bin/sh $HOME/dotfiles/scripts/docker-copy-file-to-volume.sh"
