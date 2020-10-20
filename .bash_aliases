@@ -16,6 +16,9 @@ alias docker-copy-to-volume="/bin/sh $HOME/dotfiles/scripts/docker-copy-file-to-
 alias docker-copy-file-to-approot="/bin/sh $HOME/dotfiles/scripts/docker-copy-file-to-approot.sh"
 alias docker-flush-start="/bin/sh $HOME/dotfiles/scripts/docker-flush-start.sh"
 alias docker-restart-service="/bin/sh $HOME/dotfiles/scripts/docker-restart-service.sh"
+# Database backups / restore
+alias docker-db-backup="/bin/sh $HOME/dotfiles/scripts/docker-db/backup.sh"
+alias docker-db-restore="/bin/sh $HOME/dotfiles/scripts/docker-db/restore.sh"
 # install git-server-hooks
 alias git-server-hooks-install="/bin/sh $HOME/dotfiles/scripts/git-server-hooks/install.sh"
 # push to git-server-hooks remote named "live" and applies docker-compose up -d on the $ws/<-d>
