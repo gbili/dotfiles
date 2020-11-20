@@ -27,3 +27,8 @@ if [ -e $testfil -o -h $testfil ]; then
     mv "$testfil" "$testfil.back"
 fi
 ln -s "$dotfilesdir/$testfilname" $testfil 
+
+# source bash aliases to enable the scripts
+# without requiring full path spec
+. $HOME/.bash_profile
+. $HOME/.bashrc

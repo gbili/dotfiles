@@ -16,8 +16,8 @@ if [ -z "$reversedomain" ]; then
 fi
 
 if [ -z "$sitesdir" ]; then
-    sitesdir="$HOME/Documents/workspace/sites"
-    echo "No sites dir specified with option -s, using default";
+    sitesdir="$HOME/Documents/workspace/wordpress_sites"
+    echo "No wordpress sites dir specified with option -s, using default";
     echo "$sitesdir";
 fi
 
