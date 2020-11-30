@@ -55,7 +55,8 @@ echo "You will now decide what password to use for ${username}";
 cd "${registrydir}/auth"
 htpasswd -Bc registry.password $username
 
-echo "Do not forget to login before pushing with:\n docker login $fqdn:5000\n";
+echo "Do not forget to login before pushing with:\n docker login $fqdn\n";
+echo "IMPORTANT: do NOT put the :5000 at the end of login domain\n";
 echo "You can now: docker-build-push -t $fqdn/$username/myapp-react:0.0.2";
 
 echo "We will try to docker-compose up --force-recreate"

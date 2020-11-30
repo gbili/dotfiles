@@ -14,15 +14,18 @@ ws=$HOME/Documents/workspace
 compose_dir=$ws/$compose_dirname;
 
 if [ ! -d ${compose_dir} ]; then
-  echo "No such directory $compose_dir, exiting";
-  exit 1;
+  compose_dir=$ws/status-check_instances/$compose_dirname;
+  if [ ! -d ${compose_dir} ]; then
+    echo "No such directory $compose_dir, exiting";
+    exit 1;
+  fi
 fi
 if [ ! -f ${compose_dir}/docker-compose.yml ]; then
   echo "Docker-compose.yml not found $compose_dir, exiting";
   exit 1;
 fi
 
-echo "Changin directory to ${compose_dir}";
+echo "Changing directory to ${compose_dir}";
 cd ${compose_dir};
 
 echo "Will restart docker container";

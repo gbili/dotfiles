@@ -39,3 +39,6 @@ alias ubuntu-recreate-launch-nginx-proxy="/bin/sh $HOME/dotfiles/scripts/ubuntu-
 alias ubuntu-recreate-install-docker-registry="/bin/sh $HOME/dotfiles/scripts/ubuntu-recreate/install-docker-registry.sh"
 alias ubuntu-recreate-install-vim-vundle="/bin/sh $HOME/dotfiles/scripts/ubuntu-recreate/install-vim-vundle.sh"
 alias ubuntu-recreate-prepare-cwa="/bin/sh $HOME/dotfiles/scripts/ubuntu-recreate/prepare-for-cwa.sh"
+
+# Locally
+alias cronide-startl="/bin/sh $HOME/dotfiles/scripts/cronide-start-locally.sh"
