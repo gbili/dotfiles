@@ -2,20 +2,20 @@
 
 echo "Launching Step 0 \n";
 
-ubuntu-recreate-install-docker
+$HOME/dotfiles/scripts/ubuntu-recreate/install-docker.sh
 
 echo "Launching Step 1 \n";
 
-ubuntu-recreate-launch-nginx-proxy
+$HOME/dotfiles/scripts/ubuntu-recreate/launch-nginx-proxy.sh
 
 echo "Launching Step 2 \n";
 
-ubuntu-recreate-install-vim-vundle
+$HOME/dotfiles/scripts/ubuntu-recreate/install-vim-vundle.sh
 
 echo "Launching Step 3 \n";
 
-ubuntu-recreate-perpare-cwa
+$HOME/dotfiles/scripts/ubuntu-recreate/perpare-cwa.sh
 
 echo "Launching Step 4 \n";
 
-ubuntu-recreate-install-docker-registry
+$HOME/dotfiles/scripts/ubuntu-recreate/install-docker-registry.sh

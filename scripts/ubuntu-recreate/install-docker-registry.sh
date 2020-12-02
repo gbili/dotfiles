@@ -14,6 +14,6 @@ echo "For what user do you want to run the registry?"
 
 read registryuser
 
-docker-registry-install -d $registryfdqn -u $registryuser
+$HOME/dotfiles/scripts/docker-registry/install.sh -d $registryfdqn -u $registryuser
 
 cd;
