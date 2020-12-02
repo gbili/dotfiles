@@ -50,6 +50,11 @@ sed -i -e "s/DOMAIN.TLD/$fqdn/g" "$registrydir/docker-compose.yml"
 echo "Enableing larger files for larger images";
 cp $currdir/vhost/dummy.host $registrydir/vhost/$fqdn
 
+cd $registrydir/vhost/$fqdn
+docker container create --name temp -v nginx-proxy_vhost:/data busybox
+docker cp $registrydir/vhost/$fqdn temp:/data
+docker rm temp
+
 # Let's create a password
 echo "You will now decide what password to use for ${username}";
 cd "${registrydir}/auth"
@@ -58,6 +63,17 @@ htpasswd -Bc registry.password $username
 echo "Do not forget to login before pushing with:\n docker login $fqdn\n";
 echo "IMPORTANT: do NOT put the :5000 at the end of login domain\n";
 echo "You can now: docker-build-push -t $fqdn/$username/myapp-react:0.0.2";
+
+# we need to destroy previously running nginx-proxy container
+# in order to load the vhost for larger files
+echo "Destroying let's encrypt nginx, in order to load new vhost";
+docker rm -f nginx-proxy
+docker rm -f nginx-proxy-gen
+docker rm -f nginx-proxy-le
+
+echo "Reloading nginx-proxy, it should have the vhost data";
+cd $HOME/dotfiles/scripts/ubuntu-recreate/nginx-proxy
+docker-compose up -d
 
 echo "We will try to docker-compose up --force-recreate"
 cd "${registrydir}"
