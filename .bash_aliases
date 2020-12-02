@@ -42,3 +42,6 @@ alias ubuntu-recreate-prepare-cwa="/bin/sh $HOME/dotfiles/scripts/ubuntu-recreat
 
 # Locally
 alias cronide-startl="/bin/sh $HOME/dotfiles/scripts/cronide-start-locally.sh"
+
+# Get the ip
+alias whereami="/bin/sh $HOME/dotfiles/scripts/whereami.sh"
