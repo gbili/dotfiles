@@ -45,3 +45,5 @@ alias cronide-startl="/bin/sh $HOME/dotfiles/scripts/cronide-start-locally.sh"
 
 # Get the ip
 alias whereami="/bin/sh $HOME/dotfiles/scripts/whereami.sh"
+alias githook-host="/bin/sh $HOME/dotfiles/scripts/githook-host.sh"
+alias private-registry-host="/bin/sh $HOME/dotfiles/scripts/private-registry-host.sh"
