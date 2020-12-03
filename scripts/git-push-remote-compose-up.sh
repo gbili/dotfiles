@@ -1,6 +1,6 @@
 #!/bin/sh
 
-[ $# -eq 0 ] && { echo "Usage: $0 -d <docker-compose.yml_parent_dir_last_part> \nExample:\n$0 -d blog2"; exit 1; }
+[ $# -eq 0 ] && { echo -e "Usage: $0 -d <docker-compose.yml_parent_dir_last_part> \nExample:\n$0 -d blog2"; exit 1; }
 
 while getopts d: flag
 do

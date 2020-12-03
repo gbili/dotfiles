@@ -1,9 +1,9 @@
 #!/bin/sh
 
-echo " --- git-server-hooks (locally): $0 \n";
-echo "This script will remove the git repository <repo_dirname>.git from the running git-server-hooks volume. \n";
+echo -e " --- git-server-hooks (locally): $0 \n";
+echo -e "This script will remove the git repository <repo_dirname>.git from the running git-server-hooks volume. \n";
 
-[ $# -eq 0 ] && { echo "Usage: $0 -d <repo-dirname> \nExample:\n$0 -d my-node-app\n"; exit 1; }
+[ $# -eq 0 ] && { echo -e "Usage: $0 -d <repo-dirname> \nExample:\n$0 -d my-node-app\n"; exit 1; }
 
 # get the parameter -d's value
 while getopts d: flag
@@ -14,7 +14,7 @@ do
 done
 
 if [ -z "$handle" ]; then
-    echo "missing parameter -d <repo-dirname>";
+    echo -e "missing parameter -d <repo-dirname>";
     exit -1;
 fi
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-[ $# -eq 0 ] && { echo "Usage: $0 -r <reverse_domain> -d <host.domain> -p <wp_db_password> -m <mysql_root_password> -s <dockerfile_sites_dir>"; exit 1; }
+[ $# -eq 0 ] && { echo -e "Usage: $0 -r <reverse_domain> -d <host.domain> -p <wp_db_password> -m <mysql_root_password> -s <dockerfile_sites_dir>"; exit 1; }
 
 # get the parameter -d's value
 while getopts d:m:p:r:s flag
@@ -15,25 +15,25 @@ do
 done
 
 if [ -z "$hostdomain" ]; then
-    echo "missing parameter -d <host.com>";
+    echo -e "missing parameter -d <host.com>";
     exit -1;
 fi
 if [ -z "$reversedomain" ]; then
-    echo "missing parameter -r <reverse_domain>";
+    echo -e "missing parameter -r <reverse_domain>";
     exit -1;
 fi
 if [ -z "$mysqlrootpassword" ]; then
-    echo "missing parameter -m <mysql_root_password>";
+    echo -e "missing parameter -m <mysql_root_password>";
     exit -1;
 fi
 if [ -z "$wpdbpassword" ]; then
-    echo "missing parameter -p <wp_db_password>";
+    echo -e "missing parameter -p <wp_db_password>";
     exit -1;
 fi
 if [ -z "$sitesdir" ]; then
     sitesdir="$HOME/Documents/workspace/wordpress_sites"
-    echo "No wordpress sites dir specified with option -s, using default";
-    echo "$sitesdir";
+    echo -e "No wordpress sites dir specified with option -s, using default";
+    echo -e "$sitesdir";
 fi
 
 if [ ! -d "$sitesdir" ]; then
@@ -41,8 +41,8 @@ if [ ! -d "$sitesdir" ]; then
 fi
 
 if [ ! -d "$sitesdir" ]; then
-    echo "Sill no sites dir in: $sitesdir"
-    echo "Exiting"
+    echo -e "Sill no sites dir in: $sitesdir"
+    echo -e "Exiting"
     exit -1;
 fi
 
@@ -51,23 +51,23 @@ dockertmpl="$sitesdir/$dockertmplname"
 
 if [ ! -f "$dockertmpl" ]; then
     currdir="$(dirname "$(readlink -f "$0")")"
-    echo "Missing docker-compose.yml template, looking for: "$dockertmpl"";
+    echo -e "Missing docker-compose.yml template, looking for: "$dockertmpl"";
     dockertmpl="$currdir/$dockertmplname";
-    echo "Using default in $dockertmpl";
+    echo -e "Using default in $dockertmpl";
 fi
 
 domaindir="$sitesdir/$reversedomain"
 
 # cd to dir and create if not exists
 if [ ! -d "$domaindir" ]; then
-    echo "Directory $domaindir DOES NOT exists."
-    echo "Creating $domaindir";
+    echo -e "Directory $domaindir DOES NOT exists."
+    echo -e "Creating $domaindir";
     mkdir -p $domaindir;
 fi
 
 if [ ! -d "$domaindir" ]; then
-    echo "Directory $domaindir STILL DOES NOT exists.";
-    echo "Exit";
+    echo -e "Directory $domaindir STILL DOES NOT exists.";
+    echo -e "Exit";
     exit -1;
 fi
 

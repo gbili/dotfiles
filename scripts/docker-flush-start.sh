@@ -1,6 +1,6 @@
 #!/bin/sh
 
-[ $# -eq 0 ] && { echo "Usage: $0 -d <docker-compose-dir> -t <tag> \nExample:\n$0 -d git-server-hooks -t 0.0.5"; exit 1; }
+[ $# -eq 0 ] && { echo -e "Usage: $0 -d <docker-compose-dir> -t <tag> \nExample:\n$0 -d git-server-hooks -t 0.0.5"; exit 1; }
 
 # get the parameter -d's value
 while getopts d:t: flag
@@ -14,8 +14,8 @@ done
 domaindir="${ws}/${handle}"
 
 if [ ! -d "$domaindir" ]; then
-    echo "Directory $domaindir DOES NOT exists.";
-    echo "Exiting";
+    echo -e "Directory $domaindir DOES NOT exists.";
+    echo -e "Exiting";
     exit -1;
 fi
 
@@ -24,7 +24,7 @@ fi
 if [ "${handle}" = "git-server-hooks" ]; then
   if [ -z "$tag" ]; then
       tag="0.1.0";
-      echo "missing parameter -t <tag>, using ${tag}";
+      echo -e "missing parameter -t <tag>, using ${tag}";
   fi
 
   cd "${domaindir}";
@@ -37,7 +37,7 @@ fi
 
 if [ "${handle}" = "blog2" ]; then
   if [ -z "$tag" ]; then
-      echo "missing parameter -t <tag>, exit";
+      echo -e "missing parameter -t <tag>, exit";
       exit 1;
   fi
 

@@ -1,8 +1,8 @@
 #!/bin/sh
 
-echo " ###### We now need to setup Nginx Let's Encrypt Proxy \n"
+echo -e " ###### We now need to setup Nginx Let's Encrypt Proxy \n"
 
-echo " ###### Launching Docker-compose nginx-proxy \n"
+echo -e " ###### Launching Docker-compose nginx-proxy \n"
 
 cd ~/dotfiles/scripts/ubuntu-recreate/nginx-proxy;
 
