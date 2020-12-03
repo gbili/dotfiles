@@ -27,6 +27,7 @@ if [ "${handle}" = "git-server-hooks" ]; then
       echo -e "missing parameter -t <tag>, using ${tag}";
   fi
 
+  PRIV_REG_HOST=$(${HOME}/dotfiles/scripts/private-registry-host.sh);
   cd "${domaindir}";
   docker rm -f ${handle};
   docker rmi $($PRIV_REG_HOST)/gbili/${handle}:${tag};
