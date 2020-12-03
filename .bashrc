@@ -171,3 +171,11 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+
+if [ "$(whereami)" = '199.241.137.4' ]; then
+  PRIV_REG_SERVER=ssdnodes.zivili.ch
+else
+  PRIV_REG_SERVER=docker.zivili.ch
+fi
+export PRIV_REG_SERVER
