@@ -33,6 +33,7 @@ ls -la $currdir;
 
 cp $currdir/docker-compose.repo-add.tmpl.yml $currdir/docker-compose.yml;
 
+sed -i -e "s/PRIV_REG_SERVER/$PRIV_REG_SERVER/g" "$currdir/docker-compose.yml";
 sed -i -e "s/GIT_REPO_DIRNAME/$repodir/g" "$currdir/docker-compose.yml";
 sed -i -e "s/GIT_HOOK_NS/$hookns/g" "$currdir/docker-compose.yml";
 

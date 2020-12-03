@@ -28,6 +28,7 @@ currdir="$(dirname "$(readlink -f "$0")")"
 cp $currdir/docker-compose.tmpl.yml $gitserverhooksdir/docker-compose.yml
 
 echo "Replacing fqdn into docker-compose.yml";
+sed -i -e "s/PRIV_REG_SERVER/$PRIV_REG_SERVER/g" "$gitserverhooksdir/docker-compose.yml"
 sed -i -e "s/DOMAIN.TLD/$fqdn/g" "$gitserverhooksdir/docker-compose.yml"
 sed -i -e "s/REPO_USERNAME/$username/g" "$gitserverhooksdir/docker-compose.yml"
 
