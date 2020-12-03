@@ -29,7 +29,7 @@ if [ "${handle}" = "git-server-hooks" ]; then
 
   cd "${domaindir}";
   docker rm -f ${handle};
-  docker rmi $($PRIV_REG_SERVER)/gbili/${handle}:${tag};
+  docker rmi $($PRIV_REG_HOST)/gbili/${handle}:${tag};
   docker-compose up -d;
 fi
 

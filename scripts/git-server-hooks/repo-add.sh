@@ -33,13 +33,13 @@ ls -la $currdir;
 
 cp $currdir/docker-compose.repo-add.tmpl.yml $currdir/docker-compose.yml;
 
-sed -i -e "s/PRIV_REG_SERVER/$PRIV_REG_SERVER/g" "$currdir/docker-compose.yml";
+sed -i -e "s/PRIV_REG_HOST/$PRIV_REG_HOS/g" "$currdir/docker-compose.yml";
 sed -i -e "s/GIT_REPO_DIRNAME/$repodir/g" "$currdir/docker-compose.yml";
 sed -i -e "s/GIT_HOOK_NS/$hookns/g" "$currdir/docker-compose.yml";
 
 docker-compose -f $currdir/docker-compose.yml up
 
-echo "\nYour repo $repodir, has been created, you can now do:\n\ngit remote add live ssh://git@githook.co:2222/u/gbili/$repodir.git";
+echo -e "\nYour repo $repodir, has been created, you can now do:\n\ngit remote add live ssh://git@${GITHOOKS_HOST}:2222/u/gbili/$repodir.git";
 
 echo "Cleaning up";
 rm $currdir/docker-compose.yml;
