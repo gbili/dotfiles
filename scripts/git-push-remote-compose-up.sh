@@ -1,13 +1,36 @@
 #!/bin/sh
+[ $# -eq 0 ] && { echo -e "Usage: $0 -d <dir_name> -u <username> -h <host>\n Example $0 -d my_node_app -u g -h 199.21.23.24"; exit 1; }
 
-[ $# -eq 0 ] && { echo -e "Usage: $0 -d <docker-compose.yml_parent_dir_last_part> \nExample:\n$0 -d blog2"; exit 1; }
-
-while getopts d: flag
+# get the parameter -d's value
+while getopts d:n:u:h: flag
 do
     case "${flag}" in
-        d) compose_dirname=${OPTARG};;
+        d) repodir=${OPTARG};;
+        u) username=${OPTARG};;
+        h) hostname=${OPTARG};;
     esac
 done
 
-git push live
-ssh ubuntu@45.157.190.21 '$HOME/dotfiles/scripts/docker-restart-service.sh -d' $compose_dirname;
+if [ -z "$repodir" ]; then
+    echo -e "missing parameter -d <dir_name>";
+    exit -1;
+fi
+
+if [ -z "$hookns" ]; then
+    hookns="vanilla"
+    echo -e "missing parameter -n <namespace>, using $hookns";
+fi
+
+if [ -z "$username" ]; then
+    username="ubuntu"
+    echo -e "missing parameter -u <remote_username>, using default: $username";
+fi
+
+if [ -z "$hostname" ]; then
+    hostname="45.157.190.21"
+    echo -e "missing parameter -h <hostname_host_IP>, using default: $hostname";
+fi
+
+git push live;
+
+ssh "${username}@${hostname}" '$HOME/dotfiles/scripts/docker-restart-service.sh -d' $repodir;
