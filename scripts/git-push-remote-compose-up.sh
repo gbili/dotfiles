@@ -16,11 +16,6 @@ if [ -z "$repodir" ]; then
     exit -1;
 fi
 
-if [ -z "$hookns" ]; then
-    hookns="vanilla"
-    echo -e "missing parameter -n <namespace>, using $hookns";
-fi
-
 if [ -z "$username" ]; then
     username="ubuntu"
     echo -e "missing parameter -u <remote_username>, using default: $username";
