@@ -13,12 +13,16 @@ ws=$HOME/Documents/workspace
 
 compose_dir=$ws/$compose_dirname;
 
+echo $compose_dir
+
 if [ ! -d ${compose_dir} ]; then
   echo -e "No such directory $compose_dir, exiting";
   exit 1;
 fi
 
 db_backups_dir=${compose_dir}/docker-db-backups
+
+echo $db_backups_dir
 
 if [ ! -d ${db_backups_dir} ]; then
   echo -e "Cannot find backups dir";
