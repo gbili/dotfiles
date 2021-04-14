@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 [ $# -eq 0 ] && { echo -e "Usage: $0 -d <docker-compose-dir> -t <tag> \nExample:\n$0 -d git-server-hooks -t 0.0.5"; exit 1; }
 
@@ -11,7 +11,12 @@ do
     esac
 done
 
+echo "Input was -d ${handel}, -t ${tag}";
+
+
 domaindir="${ws}/${handle}"
+
+echo "Domain dir is ${domaindir}";
 
 if [ ! -d "$domaindir" ]; then
     echo -e "Directory $domaindir DOES NOT exists.";
@@ -21,16 +26,25 @@ fi
 
 # ---------- Git server hooks
 
-if [ "${handle}" = "git-server-hooks" ]; then
+if [ "${handle}" = "git-server-hooks" ] || [ "${handle}" = "cronide-react" ] ; then
   if [ -z "$tag" ]; then
       tag="0.1.0";
       echo -e "missing parameter -t <tag>, using ${tag}";
   fi
 
   PRIV_REG_HOST=$(${HOME}/dotfiles/scripts/private-registry-host.sh);
+  sleep 2;
+  imgtag=${$PRIV_REG_HOST};
+  echo "${imgtag}";
+  imgtag="${imgtag}/gbili/${handle}:${tag}";
+  echo "cd: ${domaindir}";
   cd "${domaindir}";
+  pwd;
+  echo "docker rm -f: ${handle}";
   docker rm -f ${handle};
-  docker rmi $($PRIV_REG_HOST)/gbili/${handle}:${tag};
+  echo "docker rmi ${imgtag}";
+  docker rmi ${imgtag};
+  echo "docker-compose up -d";
   docker-compose up -d;
 fi
 
@@ -52,3 +66,5 @@ if [ "${handle}" = "blog2" ]; then
 
   # IMPORTANT: make sure to git push after these commands
 fi
+
+echo "We haven't done much";
