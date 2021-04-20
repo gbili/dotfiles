@@ -3,7 +3,7 @@ version: '3.7'
 services:
 
   git-server-hooks:
-    image: docker.zivili.ch/gbili/git-server-hooks:0.1.1
+    image: PRIV_REG_HOST/gbili/git-server-hooks:0.1.1
     container_name: git-server-hooks
     environment:
       GIT_REPOS_OWNERNAME: REPO_USERNAME

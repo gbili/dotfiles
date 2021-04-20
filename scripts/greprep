@@ -29,48 +29,48 @@ search_in_dir=$4
 while getopts "chbBrotTf" opt; do
     case "$opt" in
         h)
-            echo "Usage: greprep -chbBrotTf pattern replacement dir"
-            echo "b(backup): File backup enabled"
-            echo "B(!backup): File backup disabled"
-            echo "r(recursive): Grep recursively"
-            echo "o(overwrite): Overwrite files"
-            echo "t(temp): Keep temp files"
-            echo "T(!temp): Don't keep temp files"
-            echo "f(filename): Replace filenames"
-            echo "c(cleanup): cleanup greprep files, with t:remove temp files, with b:remove backup files"
+            echo -e "Usage: greprep -chbBrotTf pattern replacement dir"
+            echo -e "b(backup): File backup enabled"
+            echo -e "B(!backup): File backup disabled"
+            echo -e "r(recursive): Grep recursively"
+            echo -e "o(overwrite): Overwrite files"
+            echo -e "t(temp): Keep temp files"
+            echo -e "T(!temp): Don't keep temp files"
+            echo -e "f(filename): Replace filenames"
+            echo -e "c(cleanup): cleanup greprep files, with t:remove temp files, with b:remove backup files"
             exit
             ;;
         b)
-            echo "Option b: File backup enabled"
+            echo -e "Option b: File backup enabled"
             backup_files=1
             ;;
         B)
-            echo "Option B: File backup disabled"
+            echo -e "Option B: File backup disabled"
             backup_files=0
             ;;
         t)
-            echo "Option t: Keep temp files"
+            echo -e "Option t: Keep temp files"
             keep_temp_files=1
             ;;
         T)
-            echo "Option T: Don't keep temp files"
+            echo -e "Option T: Don't keep temp files"
             keep_temp_files=1
             ;;
         r)
-            echo "Option r: Grep recursively"
+            echo -e "Option r: Grep recursively"
             grep_options="r$grep_options"
             ;;
         c) 
-            echo "Option c: cleanup"
+            echo -e "Option c: cleanup"
             search_in_dir=$2
             cleanup_and_exit=1
             ;;
         o)
-            echo "Option o: Overwrite files"
+            echo -e "Option o: Overwrite files"
             overwrite_files=1
             ;;
         f)
-            echo "Option f: Replace filenames"
+            echo -e "Option f: Replace filenames"
             rename_files=1
             ;;
     esac
@@ -100,10 +100,10 @@ function replace_occurrencies
 {
     for file in `find_files_with_pattern`; do
         if [ $backup_files -eq 1 ]; then
-           echo "Backing file:$file -> $file$file_backup_ext" 
+           echo -e "Backing file:$file -> $file$file_backup_ext" 
            cp "$file" "$file$file_backup_ext"
         fi
-        echo "Replacing $pattern with $replacement in $file"
+        echo -e "Replacing $pattern with $replacement in $file"
         sed -e "s/$pattern/$replacement/g" $file > "$file$file_temp_ext"
 
         if [ $overwrite_files -eq 1 ]; then

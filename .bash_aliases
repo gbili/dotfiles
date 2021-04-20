@@ -3,7 +3,7 @@ alias alias-script="/bin/sh $HOME/dotfiles/scripts/alias-script.sh"
 alias link-dotfiles="/bin/sh $HOME/dotfiles/scripts/link-dotfiles.sh" # not very usefull, once linked no need to execute this
 
 # Docker wordpress
-alias cwa-init="/bin/sh $HOME/dotfiles/scripts/create-wordpress-app/init.sh"
+alias cwa-init="/bin/sh $HOME/dotfiles/scripts/create-wordpress-app/cwa-init.sh"
 alias cwa-dup="/bin/sh $HOME/dotfiles/scripts/create-wordpress-app/cwa-dup.sh"
 alias cwa-dup-post="/bin/sh $HOME/dotfiles/scripts/create-wordpress-app/cwa-dup-post.sh"
 alias cwa-clean="/bin/sh $HOME/dotfiles/scripts/create-wordpress-app/cwa-clean.sh"
@@ -16,6 +16,9 @@ alias docker-copy-to-volume="/bin/sh $HOME/dotfiles/scripts/docker-copy-file-to-
 alias docker-copy-file-to-approot="/bin/sh $HOME/dotfiles/scripts/docker-copy-file-to-approot.sh"
 alias docker-flush-start="/bin/sh $HOME/dotfiles/scripts/docker-flush-start.sh"
 alias docker-restart-service="/bin/sh $HOME/dotfiles/scripts/docker-restart-service.sh"
+# Database backups / restore
+alias docker-db-backup="/bin/sh $HOME/dotfiles/scripts/docker-db/backup.sh"
+alias docker-db-restore="/bin/sh $HOME/dotfiles/scripts/docker-db/restore.sh"
 # install git-server-hooks
 alias git-server-hooks-install="/bin/sh $HOME/dotfiles/scripts/git-server-hooks/install.sh"
 # push to git-server-hooks remote named "live" and applies docker-compose up -d on the $ws/<-d>
@@ -39,3 +42,8 @@ alias ubuntu-recreate-prepare-cwa="/bin/sh $HOME/dotfiles/scripts/ubuntu-recreat
 
 # Locally
 alias cronide-startl="/bin/sh $HOME/dotfiles/scripts/cronide-start-locally.sh"
+
+# Get the ip
+alias whereami="/bin/sh $HOME/dotfiles/scripts/whereami.sh"
+alias githook-host="/bin/sh $HOME/dotfiles/scripts/githook-host.sh"
+alias private-registry-host="/bin/sh $HOME/dotfiles/scripts/private-registry-host.sh"

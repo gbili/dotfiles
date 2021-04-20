@@ -171,3 +171,17 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+if [ "$(whereami)" = '199.241.137.4' ]; then
+  SERVER_URL_NS='ssdnodes.'
+  PRIV_REG_HOST=${SERVER_URL_NS}zivili.ch
+  GITHOOKS_HOST=${SERVER_URL_NS}githook.co
+else
+  SERVER_URL_NS=''
+  PRIV_REG_HOST=docker.zivili.ch
+  GITHOOKS_HOST=${SERVER_URL_NS}githook.co
+fi
+
+export SERVER_URL_NS
+export GITHOOKS_HOST
+export PRIV_REG_HOST

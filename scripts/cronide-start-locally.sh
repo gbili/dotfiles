@@ -1,17 +1,17 @@
-#!/bin/bash
+#!/bin/sh
 
-echo "Starting project";
+killall -9 node;
+
+sleep 2s;
+
 cd $ws/node/cronide-server-project;
-npm start;
+gnome-terminal -- npm start;
 
-echo "Starting user";
 cd $ws/node/cronide-server-user;
-npm start;
+gnome-terminal -- npm start;
 
-echo "Starting tag";
 cd $ws/node/cronide-server-tag;
-npm start;
+gnome-terminal -- npm start;
 
-echo "Starting gateway";
-cd $ws/graphql-server-gateway;
-npm start;
+cd $ws/node/graphql-server-gateway;
+sleep 5s && npm start;

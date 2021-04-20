@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   git-server-hooks-repo-add-service:
-    image: docker.zivili.ch/gbili/git-server-hooks-repo-add:0.2.0
+    image: PRIV_REG_HOST/gbili/git-server-hooks-repo-add:0.2.0
     environment:
       GIT_REPO_NAME: GIT_REPO_DIRNAME
       GIT_REPO_OWNERNAME: gbili

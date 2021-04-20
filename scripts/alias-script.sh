@@ -1,6 +1,6 @@
 #!/bin/sh
 
-[ $# -eq 0 ] && { echo "Usage: $0 -f <filename> -n <scriptname> \nExample:\n$0 -f flush-start.sh -n flshs"; exit 1; }
+[ $# -eq 0 ] && { echo -e "Usage: $0 -f <filename> -n <scriptname> \nExample:\n$0 -f flush-start.sh -n flshs"; exit 1; }
 
 while getopts f:n: flag
 do
@@ -13,7 +13,7 @@ done
 scriptfilefullpath=$HOME/dotfiles/scripts/$filename
 
 if [ ! -f $scriptfilefullpath ]; then
-  echo "No such script $scriptfilefullpath";
+  echo -e "No such script $scriptfilefullpath";
   exit 1;
 fi
 

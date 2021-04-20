@@ -30,5 +30,9 @@ ln -s "$dotfilesdir/$testfilname" $testfil
 
 # source bash aliases to enable the scripts
 # without requiring full path spec
-. $HOME/.bash_profile
+if [ -f $HOME/.bash_profile ]; then
+  . $HOME/.bash_profile
+elif [ -f $HOME/.profile ]; then
+  . $HOME/.profile
+fi
 . $HOME/.bashrc
