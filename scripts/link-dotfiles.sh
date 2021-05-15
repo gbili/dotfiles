@@ -1,7 +1,11 @@
-#!/bin/bash
+#!/bin/sh
 
 currdir="$(dirname "$(readlink -f "$0")")"
 dotfilesdir="$(dirname "$currdir")"
+
+
+echo "Current dir: $currdir"
+echo "dotfiles dir: $dotfilesdir"
 
 testfilname=".bash_aliases"
 testfil="$HOME/$testfilname"
