@@ -13,20 +13,20 @@ services:
     volumes:
       - ./db_data:/var/lib/mysql
 
-  REVERSE_DOMAIN_wp_db_phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: REVERSE_DOMAIN_wp_db_phpmyadmin
-    depends_on:
-      - REVERSE_DOMAIN_wp_db
-    environment:
-      PMA_HOST: REVERSE_DOMAIN_wp_db
-      MYSQL_ROOT_PASSWORD: MYSQLPASSWORD
-      MYSQL_DATABASE: REVERSE_DOMAIN_wp_db_name
-      MYSQL_USER: REVERSE_DOMAIN_wp_db_user
-      MYSQL_PASSWORD: WPDBPASSWORD
-    expose:
-      - 80
-    restart: always
+        #  REVERSE_DOMAIN_wp_db_phpmyadmin:
+        #    image: phpmyadmin/phpmyadmin
+        #    container_name: REVERSE_DOMAIN_wp_db_phpmyadmin
+        #    depends_on:
+        #      - REVERSE_DOMAIN_wp_db
+        #    environment:
+        #      PMA_HOST: REVERSE_DOMAIN_wp_db
+        #      MYSQL_ROOT_PASSWORD: MYSQLPASSWORD
+        #      MYSQL_DATABASE: REVERSE_DOMAIN_wp_db_name
+        #      MYSQL_USER: REVERSE_DOMAIN_wp_db_user
+        #      MYSQL_PASSWORD: WPDBPASSWORD
+        #    expose:
+        #      - 80
+        #    restart: always
 
   REVERSE_DOMAIN_wp:
     image: wordpress:latest
@@ -46,6 +46,7 @@ services:
     restart: always
     volumes:
       - ./wordpress_files:/var/www/html
+      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
 
 networks:
   default:

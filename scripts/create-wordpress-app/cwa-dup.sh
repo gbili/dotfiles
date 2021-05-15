@@ -1,5 +1,5 @@
 #!/bin/bash
-[ $# -eq 0 ] && { echo -e "Usage: $0 -r <reverse_domain> -s <dockerfile_sites_dir>"; exit 1; }
+[ $# -eq 0 ] && { echo -e "Usage: $0 -r <reverse_domain> -s <dockerfile_sites_dir> -c <1>"; exit 1; }
 
 # get the parameter -d's value
 while getopts r:s: flag
@@ -7,11 +7,19 @@ do
     case "${flag}" in
         r) reversedomain=${OPTARG};;
         s) sitesdir=${OPTARG};;
+        c) confirm=${OPTARG};;
     esac
 done
 
 if [ -z "$reversedomain" ]; then
     echo -e "missing parameter -r <reverse_domain>";
+    exit -1;
+fi
+
+currbasename=${PWD##*/}
+
+if [ "$currbasename" != "$reversedomain" ]; then
+    echo -e "you must cd into $reversedomain in order to run this command";
     exit -1;
 fi
 
