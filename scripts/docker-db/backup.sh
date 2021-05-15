@@ -20,7 +20,7 @@ fi
 
 backup_filename=$(date +"%y-%m-%d").sql;
 echo -e "Running mysqldump within docker container: \n"
-docker exec -it ${compose_dirname}-db /bin/sh -c "cd /var/lib/mysql && mysqldump -u ${compose_dirname}_user -p -R ${compose_dirname}_db > ${backup_filename}"
+docker exec -it ${compose_dirname}-db /bin/sh -c "cd /var/lib/mysql && mysqldump --no-tablespaces -u ${compose_dirname}_user -p -R ${compose_dirname}_db > ${backup_filename}"
 
 db_backups_dir=${compose_dir}/docker-db-backups
 
