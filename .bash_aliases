@@ -3,6 +3,7 @@ alias alias-script="/bin/sh $HOME/dotfiles/scripts/alias-script.sh"
 alias link-dotfiles="/bin/sh $HOME/dotfiles/scripts/link-dotfiles.sh" # not very usefull, once linked no need to execute this
 
 # Docker wordpress
+alias cwa-extend-times="/bin/sh $HOME/dotfiles/scripts/create-wordpress-app/extend-exec-times.sh"
 alias cwa-init="/bin/sh $HOME/dotfiles/scripts/create-wordpress-app/cwa-init.sh"
 alias cwa-dup="/bin/sh $HOME/dotfiles/scripts/create-wordpress-app/cwa-dup.sh"
 alias cwa-dup-post="/bin/sh $HOME/dotfiles/scripts/create-wordpress-app/cwa-dup-post.sh"
