@@ -1,9 +1,9 @@
 #!/bin/bash
 
-echo -e " --- git-server-hooks (remote on ubunut@45.157.190.21): $0 \n";
-echo -e "This script will repo-add a git repository <repo_dirname>.git in the running git-server-hooks volume. \n";
+echo " --- git-server-hooks (default remote is on g@199.241.137.4): $0 \n";
+echo "This script will repo-add a git repository <repo_dirname>.git in the running git-server-hooks volume. \n";
 
-[ $# -eq 0 ] && { echo -e "Usage: $0 -d <dir_name> -n <namespace> -u <username> -h <host>\n Example $0 -d my_node_app -n vanilla|node"; exit 1; }
+[ $# -eq 0 ] && { echo -e "Usage: $0 -d <dir_name> -n <namespace> -u <username> -h <host>\n Example $0 -d my_node_app -n vanilla -u ubuntu -h 45.157.190.21"; exit 1; }
 
 # get the parameter -d's value
 while getopts d:n:u:h: flag
@@ -27,12 +27,12 @@ if [ -z "$hookns" ]; then
 fi
 
 if [ -z "$username" ]; then
-    username="ubuntu"
+    username="g"
     echo -e "missing parameter -u <remote_username>, using default: $username";
 fi
 
 if [ -z "$hostname" ]; then
-    hostname="45.157.190.21"
+    hostname="199.241.137.4"
     echo -e "missing parameter -h <hostname_host_IP>, using default: $hostname";
 fi
 
